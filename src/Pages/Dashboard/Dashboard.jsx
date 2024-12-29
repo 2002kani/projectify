@@ -9,6 +9,6 @@ const Dashboard = () => {
             <Titelkarte titel={"Dashboard"}/>
         </div>
     );
-}
+} 
 
 export default Dashboard

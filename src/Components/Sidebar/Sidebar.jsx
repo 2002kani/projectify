@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "./Sidebar.css";
+import { Link } from "react-router-dom";
 
 const Sidebar = () => {
 
@@ -30,14 +31,13 @@ const Sidebar = () => {
             <ul>
                 {sidebarItems.map((item)=> (
                     <li key={item.id}>
-                        <a href="#" className={activeItem === item.id ? "active" : ""}
+                        <Link to={`/${item.bezeichnung}`} className={activeItem === item.id ? "active" : ""}
                         onClick={(e) =>{
-                            e.preventDefault();
                             setActiveItem(item.id);
                         }}>
                             <span>{item.icon}</span>
                             <span className="bezeichnung">{item.bezeichnung}</span>
-                        </a>
+                        </Link>
                     </li>
                 ))}
             </ul>
