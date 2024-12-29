@@ -1,18 +1,33 @@
+import React, { useState } from "react";
 import Titelkarte from "../../Components/Titelkarte/Titelkarte";
 import Sidebar from "../../Components/Sidebar/sidebar";
-import "./Ideen.css"
+import "./Ideen.css";
 import FilterButtons from "../../Components/FilterButtons/FilterButtons";
+import ErstellenButton from "../../Components/ErstellenButton/ErstellenButton";
+import IdeenPopup from "../../Components/IdeenPopup/IdeenPopup";
 
 const Ideen = () => {
+
+    const [isPopupVisible, setIsPopupVisible] = useState(false);
+
+    const togglePopupVisiblity = () => {
+        setIsPopupVisible(!isPopupVisible);
+    }
+
+    const handleClose = () => {
+        setIsPopupVisible(false);
+    }
+
     return(
         <div className="ideen">
             <Sidebar />
             <Titelkarte titel={"Projekt Ideen"}/>
             <div className="ideen-inhalt">
+                <ErstellenButton onClick={togglePopupVisiblity}/>
                 <FilterButtons/>
-                <div className="hinzufügen">
-                    <h1> + </h1>
-                </div>
+                {isPopupVisible && (
+                    <IdeenPopup onClose={handleClose} />
+                )}
             </div>
         </div>
     );
