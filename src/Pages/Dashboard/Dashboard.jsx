@@ -7,8 +7,11 @@ const Dashboard = () => {
         <div className="dashboard">
             <Sidebar />
             <Titelkarte titel={"Dashboard"}/>
+            <div className="dashboard-inhalt">
+                <h1> HALLO </h1>
+            </div>
         </div>
     );
 } 
-
+ 
 export default Dashboard

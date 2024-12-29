@@ -1,11 +1,11 @@
 import "./Titelkarte.css"
-import BenutzerIcon from "../../Assets/IMG_1983.JPG"
+import BenutzerIcon from "../../Assets/IMG_1984.PNG"
 
 const Titelkarte = ({titel}) => {
     return(
         <div className="titelkarte">
             <div className="titel">
-                <h1>{titel ? titel : "Dasboard"}</h1>
+                <h1>{titel ? titel : "Unbenannt"}</h1>
             </div>
             <div className="icons">
                 <img src={BenutzerIcon} alt="Profilbild"/>

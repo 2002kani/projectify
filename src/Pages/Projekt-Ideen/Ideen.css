@@ -1,0 +1,46 @@
+
+.ideen-inhalt{
+    flex-grow: 1;
+    margin: 10px 20px 20px 225px; /*210*/
+    padding: 25px;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    height: 77vh;
+    border-radius: 10px;
+    background-color: #fff;
+    box-shadow: rgba(0, 0, 0, 0.02) 0px 4px 12px;
+    position: relative;
+}
+
+.sidebar.closed ~ .ideen-inhalt {
+    margin-left: 100px; /*85*/
+}
+
+.ideen-inhalt .hinzufügen{
+    border: 4px dashed #e3e3e3;
+    width: 14rem;
+    height: 14rem;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.ideen-inhalt .hinzufügen:hover{
+    border: 4px dashed #d3d3d3;
+    transition: 0.25s;
+    background: #f3f3f3;
+}
+
+.ideen-inhalt .hinzufügen h1{
+    color: #e3e3e3;
+    font-weight: 400;
+    font-size: 4rem;
+}
+
+.ideen-inhalt .hinzufügen:hover h1 {
+    color: #d3d3d3;
+    transition: 0.25s;
+}

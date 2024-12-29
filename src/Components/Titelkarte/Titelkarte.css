@@ -7,7 +7,6 @@
     display: flex;
     justify-content: space-between;
     height: 40px;
-    box-shadow: rgba(100, 100, 111, 0.1) 0px 7px 29px 0px;
     margin-top: 15px;
     margin-right: 15px;
     border-radius: 10px;
@@ -30,6 +29,7 @@
 
 .icons img{
     height: 3rem;
+    border-radius: 50%;
 }
 
 .titelkarte .abmelden{
@@ -48,7 +48,7 @@
 .titelkarte .abmelden p{
     cursor: pointer;
     font-size: 13px;
-    color: #191919;
+    color: #1e1e1e;
     font-weight: 600;
 }
 

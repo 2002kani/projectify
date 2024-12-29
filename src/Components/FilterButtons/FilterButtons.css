@@ -1,0 +1,33 @@
+
+.filter-container {
+    position: absolute;
+    top: 10px;
+    right: 10px; 
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 4px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 180px;
+}
+
+.filter-option {
+    padding: 8px 10px;
+    border-radius: 6px;
+    background-color: transparent;
+    color: #333;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.filter-option.active {
+    background-color: #eaeaea;
+    color: #000;
+}
+
+.filter-option:hover {
+    background-color: #eee;
+}
