@@ -12,13 +12,18 @@ const Sidebar = () => {
     ];
 
     const [activeItem, setActiveItem] = useState(1);
+    const [isSidebarOpen, setisSidebarOpen] = useState(true);
+    
+    const toggleSidebar = () => {
+        setisSidebarOpen(!isSidebarOpen);
+    };
 
     return(
-        <div className="sidebar">
+        <div className={`sidebar ${isSidebarOpen ? "" : "closed"}`}>
             <div className="top">
                 <div className="logo">
                     <h2> 👋 Hey Kani! </h2>
-                    <i class='bx bx-chevron-right'></i>
+                    <i class='bx bx-chevron-right' onClick={toggleSidebar}></i>
                 </div>
             </div>
 
@@ -31,7 +36,7 @@ const Sidebar = () => {
                             setActiveItem(item.id);
                         }}>
                             <span>{item.icon}</span>
-                            <span>{item.bezeichnung}</span>
+                            <span className="bezeichnung">{item.bezeichnung}</span>
                         </a>
                     </li>
                 ))}

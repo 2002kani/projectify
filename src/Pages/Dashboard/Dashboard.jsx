@@ -1,8 +1,13 @@
 import Sidebar from "../../Components/Sidebar/sidebar";
+import Titelkarte from "../../Components/Titelkarte/Titelkarte";
+import "./Dashboard.css";
 
 const Dashboard = () => {
     return(
-        <Sidebar/>
+        <div className="dashboard">
+            <Sidebar />
+            <Titelkarte titel={"Dashboard"}/>
+        </div>
     );
 }
 
