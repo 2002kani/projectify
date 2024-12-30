@@ -2,7 +2,7 @@ import { useState } from "react";
 import "./Sidebar.css";
 import { Link } from "react-router-dom";
 
-const Sidebar = () => {
+const Sidebar = ({ isOpen, onToggle }) => {
 
     const sidebarItems = [
         {id: 1, bezeichnung: "Dashboard", icon: <i className='bx bx-home-alt'></i>},
@@ -13,18 +13,13 @@ const Sidebar = () => {
     ];
 
     const [activeItem, setActiveItem] = useState(1);
-    const [isSidebarOpen, setisSidebarOpen] = useState(true);
-    
-    const toggleSidebar = () => {
-        setisSidebarOpen(!isSidebarOpen);
-    };
 
     return(
-        <div className={`sidebar ${isSidebarOpen ? "" : "closed"}`}>
+        <div className={`sidebar ${isOpen ? "" : "closed"}`}>
             <div className="top">
                 <div className="logo">
                     <h2> 👋 Hey Kani! </h2>
-                    <i className='bx bx-chevron-right' onClick={toggleSidebar}></i>
+                    <i className='bx bx-chevron-right' onClick={onToggle}></i>
                 </div>
             </div>
 

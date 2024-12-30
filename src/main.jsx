@@ -1,38 +1,54 @@
-import { StrictMode } from 'react'
+import { StrictMode, useState } from 'react'
 import { createRoot } from 'react-dom/client'
 import './index.css'
 import App from './App.jsx'
 
-import { createBrowserRouter, RouterProvider } from "react-router-dom"
+import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom"
 
 import Dashboard from './Pages/Dashboard/Dashboard.jsx'
 import Error from './Pages/ErrorSeite/Error.jsx'
 import Entwurf from "./Pages/Projekt-Entwürfe/Entwurf.jsx"
 import Ideen from "./Pages/Projekt-Ideen/Ideen.jsx"
 import Konversation from "./Pages/Konversationen/Konversation.jsx"
+import Sidebar from './Components/Sidebar/sidebar.jsx'
+
+const Layout = () =>{
+
+  const [isSidebarOpen, setIsSidebarOpen] = useState(true);
+
+  return(
+    <div className={`app ${isSidebarOpen ? "" : "closed"}`}>
+      <Sidebar isOpen={isSidebarOpen} onToggle={()=> setIsSidebarOpen(!isSidebarOpen)}/>
+      <div className="content">
+        <Outlet/>
+      </div>
+    </div>
+  );
+}
 
 const router = createBrowserRouter([
-  {	
+  {
     path: "/",
-    element: <Dashboard/>,
-    errorElement: <Error/>
-  },{
-    path: "/Dashboard",
-    element: <Dashboard/>,
-    errorElement: <Error/>
-  },{
-    path: "/Entwürfe",
-    element: <Entwurf/>,
-    errorElement: <Error/>
-  },{
-    path: "/Ideen",
-    element: <Ideen/>,
-    errorElement: <Error/>
-  },{
-    path: "/Konversationen",
-    element: <Konversation/>,
-    errorElement: <Error/>
-  }]);
+    element: <Layout />,
+    errorElement: <Error />,
+    children: [{
+      path: "/",
+      element: <Dashboard/>
+    },{
+      path: "/Dashboard",
+      element: <Dashboard/>
+    },{
+      path: "/Entwürfe",
+      element: <Entwurf/>
+    },{
+      path: "/Ideen",
+      element: <Ideen/>
+    },{
+      path: "/Konversationen",
+      element: <Konversation/>
+    }]
+  }
+]);
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>

@@ -5,7 +5,7 @@ import "./Entwurf.css"
 const Entwurf = () => {
     return(
         <div className="entwurf">
-            <Sidebar />
+            
             <Titelkarte titel={"Projekt Entwürfe"}/>
         </div>
     );

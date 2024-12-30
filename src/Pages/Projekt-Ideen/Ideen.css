@@ -1,19 +1,15 @@
 
 .ideen-inhalt{
-    flex-grow: 1;
     margin: 10px 20px 20px 225px; /*210*/
     padding: 75px 25px 25px 25px;
-    transition: all 0.3s ease;
-    display: flex;
-    flex-direction: column;
     height: 69vh;
     border-radius: 10px;
     background-color: #fff;
     box-shadow: rgba(0, 0, 0, 0.02) 0px 4px 12px;
     position: relative;
+    transition: all 0.3s ease;
 }
 
-.sidebar.closed ~ .ideen-inhalt {
-    margin-left: 100px; /*85*/
+.app.closed .ideen-inhalt {
+    margin-left: 100px;
 }
-

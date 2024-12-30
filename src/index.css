@@ -9,3 +9,25 @@
 body{
   background-color: #fafafa;
 }
+
+.app.closed .dashboard-inhalt {
+  margin-left: 100px;
+}
+.app.closed .ideen-inhalt {
+  margin-left: 100px;
+}
+/*.app.closed .entwurf-inhalt {
+  margin-left: 100px;
+}
+.app.closed .konversation-inhalt {
+  margin-left: 100px;
+}*/
+
+.app {
+  display: flex;
+}
+
+.content {
+  flex: 1;
+  transition: all 0.3s ease;
+}

@@ -5,7 +5,6 @@ import "./Dashboard.css";
 const Dashboard = () => {
     return(
         <div className="dashboard">
-            <Sidebar />
             <Titelkarte titel={"Dashboard"}/>
             <div className="dashboard-inhalt">
                 <h1> HALLO </h1>
