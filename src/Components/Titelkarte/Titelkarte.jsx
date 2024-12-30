@@ -9,7 +9,7 @@ const Titelkarte = ({titel}) => {
             </div>
             <div className="icons">
                 <img src={BenutzerIcon} alt="Profilbild"/>
-                <i class='bx bx-chevron-down'></i>
+                <i className='bx bx-chevron-down'></i>
                 <div className="abmelden">
                     <p>Abmelden</p>
                 </div>
