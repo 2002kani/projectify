@@ -8,8 +8,44 @@
     box-shadow: rgba(0, 0, 0, 0.02) 0px 4px 12px;
     position: relative;
     transition: all 0.3s ease;
+    overflow-y: scroll;
 }
 
 .app.closed .ideen-inhalt {
     margin-left: 100px;
+}
+
+.ideenkarten {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 350px);
+    gap: 1.2rem;
+    padding: 15px 5px 5px 5px;
+}
+
+.idee-karte {
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.06);
+    padding: 20px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    overflow-y: scroll;
+    width: 300px;
+    height: 200px;
+}
+  
+.idee-karte:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15), 0 3px 6px rgba(0, 0, 0, 0.1);
+}
+  
+.idee-karte h2 {
+    font-size: 1.5rem;
+    color: #2e2e2e;
+    margin-bottom: 0.9rem;
+}
+  
+.idee-karte p {
+    font-size: 1rem;
+    color: #2e2e2e;
+    line-height: 1.5;
 }
