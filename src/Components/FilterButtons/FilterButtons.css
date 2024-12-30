@@ -9,7 +9,6 @@
     background-color: #2e2e2e;
     border-radius: 8px;
     padding: 4px;
-    /*box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);*/
     width: 180px;
 }
 
@@ -17,7 +16,7 @@
     padding: 8px 10px;
     border-radius: 6px;
     background-color: transparent;
-    color: #fff; /*333*/
+    color: #fff;
     cursor: pointer;
     font-size: 14px;
     transition: background-color 0.3s ease, color 0.3s ease;
