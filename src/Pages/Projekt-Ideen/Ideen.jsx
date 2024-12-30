@@ -14,11 +14,13 @@ const Ideen = () => {
     const [ideeBeschreibung, setIdeeBeschreibung] = useState("");
 
     function addItem(){
-        if(ideeTitel.trim() !== ""){
+        if(ideeTitel.trim() && ideeBeschreibung !== ""){
             setItems([...items, {titel: ideeTitel, beschreibung: ideeBeschreibung}]);
             setIdeeTitel("");
             setIdeeBeschreibung("");
             setIsPopupVisible(false);
+        } else{
+            alert("Bitte komplett Ausfüllen");
         }
     }
 

@@ -26,10 +26,4 @@
 .filter-option.active {
     background-color: #eaeaea;
     color: #000;
-
-}
-
-.filter-option:hover {
-    background-color: #eee;
-    color: #000;
 }
