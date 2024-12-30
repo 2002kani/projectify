@@ -12,7 +12,7 @@
     width: 150px;
     border: none;
     height: 40px;
-    background: #1f1f1f;
+    background: #2e2e2e;
     border-radius: 10px;
     cursor: pointer;
     font-size: 15px;
@@ -21,6 +21,6 @@
 }
 
 .erstellen-btn:hover{
-    background: #343434;
+    background: #3a3a3a;
     transition: 0.25s;
 }

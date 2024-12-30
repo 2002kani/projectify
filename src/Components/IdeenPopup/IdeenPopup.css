@@ -57,7 +57,7 @@
 .ideen-popup input:focus,
 .ideen-popup textarea:focus {
     outline: none;
-    border-color: #007bff;
+    border-color: #1f1f1f;
 }
 
 .ideen-popup input::placeholder {
@@ -70,7 +70,7 @@
 }
 
 .ideen-popup button {
-    background: #1f1f1f;
+    background: #2e2e2e;
     color: white;
     border: none;
     padding: 0.75rem 1.5rem;
@@ -84,7 +84,7 @@
 }
 
 .ideen-popup button:hover {
-    background: #2f2f2f;
+    background: #3a3a3a;
 }
 
 .ideen-popup input:hover,

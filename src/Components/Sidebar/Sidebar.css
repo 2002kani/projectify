@@ -59,15 +59,16 @@
 .sidebar .logo h2 {
     font-size: 1.2rem;
     font-weight: 800;
-    color: #333;
+    color: #2e2e2e;
     display: flex;
     align-items: center;
     gap: 5px;
+    cursor: default;
 }
 
 .sidebar .logo i {
     font-size: 1.4rem;
-    color: #212121;
+    color: #2e2e2e;
     cursor: pointer;
     transition: all 0.3s ease;
 }

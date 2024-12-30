@@ -20,9 +20,10 @@ body{
 .app.closed .ideen.inhalt {
   margin-left: 100px;
 }
-/*.app.closed .entwurf-inhalt {
+.app.closed .suche {
   margin-left: 100px;
 }
+/*
 .app.closed .konversation-inhalt {
   margin-left: 100px;
 }*/
