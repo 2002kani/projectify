@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import Titelkarte from "../../Components/Titelkarte/Titelkarte";
-import Sidebar from "../../Components/Sidebar/sidebar";
 import "./Ideen.css";
 import FilterButtons from "../../Components/FilterButtons/FilterButtons";
 import ErstellenButton from "../../Components/ErstellenButton/ErstellenButton";

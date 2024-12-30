@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;500;600;700;800&display=swap');
 
 *{
   margin: 0;
@@ -10,10 +10,14 @@ body{
   background-color: #fafafa;
 }
 
+.app.closed .titelkarte {
+  margin-left: 100px;
+}
+
 .app.closed .dashboard-inhalt {
   margin-left: 100px;
 }
-.app.closed .ideen-inhalt {
+.app.closed .ideen.inhalt {
   margin-left: 100px;
 }
 /*.app.closed .entwurf-inhalt {

@@ -18,7 +18,7 @@ const Sidebar = ({ isOpen, onToggle }) => {
         <div className={`sidebar ${isOpen ? "" : "closed"}`}>
             <div className="top">
                 <div className="logo">
-                    <h2> 👋 Hey Kani! </h2>
+                    <h2><i class='bx bxs-customize'></i> Projectify</h2>
                     <i className='bx bx-chevron-right' onClick={onToggle}></i>
                 </div>
             </div>
