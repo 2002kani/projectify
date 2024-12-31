@@ -1,0 +1,47 @@
+
+.entwürfe-kein-entwurf{
+    flex-grow: 1;
+    margin: 10px 20px 20px 225px; /*210*/
+    padding: 20px;
+    transition: all 0.3s ease;
+    display: flex;
+    height: 90vh;
+    border-radius: 10px;
+    background-color: #fff;
+    box-shadow: rgba(0, 0, 0, 0.02) 0px 4px 12px;
+}
+
+.eingabe-feld{
+    display: flex;
+    align-items: center;
+    margin: auto;
+    gap: 20px;
+    background: #eee;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.03) 0px 4px 12px;
+}
+
+.eingabe-feld button{
+    cursor: pointer;
+    padding: 12px 22px 12px 22px;
+    border-radius: 50%;
+    border: none;
+    background: #2e2e2e;
+    color: #fff;
+    font-size: 30px;
+}
+
+.eingabe-feld button:hover{
+    background: #3a3a3a;
+    transition: 0.25s;
+}
+
+.information{
+    max-width: 400px;
+}
+
+.information p{
+    margin-top: 8px;
+    color: #5d5d5d;
+}

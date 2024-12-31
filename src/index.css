@@ -24,10 +24,10 @@ body{
 .app.closed .suche {
   margin-left: 100px;
 }
-/*
-.app.closed .konversation-inhalt {
+
+.app.closed .entwürfe-kein-entwurf {
   margin-left: 100px;
-}*/
+}
 
 .app {
   display: flex;
