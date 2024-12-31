@@ -1,0 +1,89 @@
+
+.entwurf-popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.entwurf-popup {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    width: 80%;
+    max-width: 800px;
+    min-height: 500px;
+    display: flex;
+    overflow: hidden;
+}
+
+.inhalte-sidebar {
+    width: 160px;
+    background-color: #f8f8f8;
+    padding: 2rem 1.5rem;
+    border-right: 1px solid #eaeaea;
+}
+
+.inhalte-sidebar h3 {
+    font-size: 1.25rem;
+    color: #333;
+    margin: 0 0 1.5rem 0;
+    font-weight: 600;
+}
+
+.inhalte-sidebar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.inhalte-sidebar li {
+    padding: 0.55rem 0.7rem;
+    margin-bottom: 0.5rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    color: #666;
+    display: flex;
+    align-items: center;
+    gap: 7px;
+}
+
+.inhalte-sidebar li i{
+    color: #838383;
+    font-weight: 600;
+}
+
+.inhalte-sidebar li:hover {
+    background-color: #eaeaea;
+    color: #333;
+}
+
+/* Top Section with Close Button */
+.inhalt-top {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+}
+
+.inhalt-top i {
+    font-size: 1.5rem;
+    color: #666;
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+.inhalt-top i:hover {
+    color: #333;
+    transform: scale(1.05);
+}
