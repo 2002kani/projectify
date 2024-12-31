@@ -15,10 +15,11 @@
     align-items: center;
     margin: auto;
     gap: 20px;
-    background: #eee;
+    background: #fff;
     padding: 30px;
     border-radius: 10px;
     box-shadow: rgba(0, 0, 0, 0.03) 0px 4px 12px;
+    border: 2px solid #eee;
 }
 
 .eingabe-feld button{
