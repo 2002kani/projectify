@@ -20,13 +20,13 @@ const Entwurf = () => {
     return(
         <div className="enwturf">
                 <div className="entwürfe-kein-entwurf">
-                <div className="eingabe-feld">
-                    <div className="information">
-                        <h1> Noch kein Entwurf erstellt? </h1>
-                        <p> Lass deine Projekte Wirklichkeit werden, indem du jetzt deinen Entwurf planst und umsetzt!</p>
+                    <div className="eingabe-feld">
+                        <div className="information">
+                            <h1> Noch kein Entwurf erstellt? </h1>
+                            <p> Lass deine Projekte Wirklichkeit werden, indem du jetzt deinen Entwurf planst und umsetzt!</p>
+                        </div>
+                        <button className="entwurf-erstellen" onClick={handleEntwurfVisibility}> + </button>
                     </div>
-                    <button className="entwurf-erstellen" onClick={handleEntwurfVisibility}> + </button>
-                </div>
                 </div>
                 {isEntwurfVisible ?
                     <div className="projekt-inhalt">

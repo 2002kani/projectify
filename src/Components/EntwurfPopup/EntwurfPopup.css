@@ -34,6 +34,25 @@
     border-right: 1px solid #eaeaea;
 }
 
+.inhalte-sidebar button{
+    display: flex;
+    justify-self: center;
+    margin-top: 180px;
+    border: none;
+    cursor: pointer;
+    border-radius: 25px;
+    padding: 12px 15px 12px 15px;
+    font-size: 15px;
+    font-weight: 600;
+    background: #2e2e2e;
+    color: #fff;
+}
+
+.inhalte-sidebar button:hover{
+    background: #3e3e3e;
+    transition: 0.25s;
+}
+
 .inhalte-sidebar h3 {
     font-size: 1.25rem;
     color: #333;
@@ -52,11 +71,11 @@
     margin-bottom: 0.5rem;
     border-radius: 8px;
     cursor: pointer;
-    transition: background-color 0.2s ease;
     color: #666;
     display: flex;
     align-items: center;
     gap: 7px;
+    transition: background-color 0.2s ease, color 0.2s ease;
 }
 
 .inhalte-sidebar li i{
@@ -65,11 +84,16 @@
 }
 
 .inhalte-sidebar li:hover {
-    background-color: #eaeaea;
-    color: #333;
+    background-color: #e7e7e7;
+    color: #1f1f1f;
+    transition: 0.25s;
 }
 
-/* Top Section with Close Button */
+.inhalte-sidebar li.active {
+    background-color: #2e2e2e;
+    color: white;
+}
+
 .inhalt-top {
     position: absolute;
     top: 1rem;
@@ -86,4 +110,59 @@
 .inhalt-top i:hover {
     color: #333;
     transform: scale(1.05);
+}
+
+.content-container {
+    flex: 1;
+    padding: 2rem;
+    overflow-y: auto;
+    max-height: 26rem;
+}
+
+.content-section {
+    max-width: 600px;
+}
+
+.content-section h2 {
+    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
+    color: #333;
+}
+
+.input-gruppe {
+    margin-bottom: 1.5rem;
+}
+
+.input-gruppe label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #666;
+    margin-top: 2rem;
+}
+
+.input-gruppe input,
+.input-gruppe textarea {
+    width: 91%;
+    padding: 0.75rem;
+    border: 2px solid #eaeaea;
+    border-radius: 8px;
+    font-size: 1rem;
+}
+
+.input-gruppe input:hover, 
+.input-gruppe textarea:hover{
+    border-color: #d0d0d0;
+    transition: 0.25s;
+}
+
+.input-gruppe input:focus, 
+.input-gruppe textarea:focus{
+    border-color: #d0d0d0;
+    transition: 0.25s;
+    outline: none;
+}
+
+.input-gruppe textarea {
+    min-height: 120px;
+    resize: none;
 }
