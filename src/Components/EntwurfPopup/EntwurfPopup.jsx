@@ -4,6 +4,13 @@ import "./EntwurfPopup.css"
 const EntwurfPopup = ({onClose}) => {
     
     const [selectedSection, setSelectedSection] = useState("beschreibung");
+    const [ausgewählerStack, setAusgewählerStack] = useState([]);
+
+    const handleAusgewählterStack = (stack) => {
+        if (!ausgewählerStack.includes(stack)){
+            setAusgewählerStack([...ausgewählerStack, stack]);
+        }
+    }
 
     const handleSelectedSection = (section) => {
         setSelectedSection(section);
@@ -23,7 +30,30 @@ const EntwurfPopup = ({onClose}) => {
             </div>
             <div className="input-gruppe">
                 <label>Tech-Stack</label>
-                <input type="text" placeholder="z.B. React, Node.js, MongoDB..." />
+                <div className="select-techstack">
+                    <select onChange={(e) => handleAusgewählterStack(e.target.value)}>
+                    <option value={""} disabled> Auswählen</option>
+                        <option value={"Javascript"}> Javascript</option>
+                        <option value={"Typescript"}> Typescript</option>
+                        <option value={"CSS"}> CSS</option>
+                        <option value={"React.js"}> React.js</option>
+                        <option value={"Vue.js"}> Vue.js</option>
+                        <option value={"Node.js"}> Node.js</option>
+                        <option value={"Java"}> Java</option>
+                        <option value={"Phyton"}> Phyton</option>
+                        <option value={"Express.js"}> Express.js</option>
+                        <option value={"mySQL"}> mySQL</option>
+                        <option value={"MongoDB"}> MongoDB</option>
+                    </select>
+                    <div className="ausgewählter-stack">
+                        {ausgewählerStack.map((stack, index)=>(
+                            <div className="selected-stack">
+                                <p key={index}>{stack}</p>
+                                <i className='bx bx-x'></i>
+                            </div>
+                        ))}
+                    </div>
+                </div>
             </div>
         </div>);
     }
