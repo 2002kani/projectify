@@ -12,7 +12,7 @@ const IdeenPopup = ({ onClose, ideeName, onAdd, onChange, onBeschreibungChange }
 
     const handleBeschreibungChange = (e) => {
         onBeschreibungChange(e.target.value);
-    }
+    } 
  
     return(
         <div className="ideen-popup-overlay" onClick={onClose}>

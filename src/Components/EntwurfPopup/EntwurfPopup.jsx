@@ -3,12 +3,21 @@ import "./EntwurfPopup.css"
 
 const EntwurfPopup = ({onClose}) => {
     
-    const [selectedSection, setSelectedSection] = useState("beschreibung");
-    const [ausgewählerStack, setAusgewählerStack] = useState([]);
-    const [files, setFiles] = useState([]);
-    const [mockupFiles, setMockupFiles] = useState([]);
     const [projektname, setProjektname] = useState("");
     const [beschreibung, setBeschreibung] = useState("");
+    const [selectedSection, setSelectedSection] = useState("beschreibung");
+    const [ausgewählerStack, setAusgewählerStack] = useState([]);
+
+    const [files, setFiles] = useState([]);
+    const [mockupFiles, setMockupFiles] = useState([]);
+
+    const handleProjektnameChange = (e) => {
+        setProjektname(e.target.value);
+    }
+
+    const handleBeschreibungChange = (e) => {
+        setBeschreibung(e.target.value);
+    }
 
     const handleAusgewählterStack = (stack) => {
         if (!ausgewählerStack.includes(stack)){
@@ -38,7 +47,7 @@ const EntwurfPopup = ({onClose}) => {
     };
 
     const handleMockupFileChange = (e) => {
-        const selectedFiles = Array.from(e.target.files); // Korrekt: Zugriff auf die Dateien
+        const selectedFiles = Array.from(e.target.files);
         if (mockupFiles.length + selectedFiles.length > 3) {
             alert("Es können maximal 3 Dateien hochgeladen werden.");
             return;
@@ -57,12 +66,12 @@ const EntwurfPopup = ({onClose}) => {
         <div className="beschreibung-section">
             <h2>Projektbeschreibung</h2>
             <div className="input-gruppe">
-                <label>Projektname</label>
-                <input type="text" placeholder="Gib den Projektnamen ein" value={projektname} onChange={(e) => setProjektname(e.target.value)}/>
+                <label htmlFor="projektname" >Projektname</label>
+                <input id="projektname" type="text" placeholder="Gib den Projektnamen ein" value={projektname} onChange={handleProjektnameChange} onClick={(e) => e.stopPropagation()}/>
             </div>
             <div className="input-gruppe">
-                <label>Beschreibung</label>
-                <textarea placeholder="Beschreibe dein Projekt" value={beschreibung} onChange={(e) => setBeschreibung(e.target.value)}></textarea>
+                <label htmlFor="beschreibung">Beschreibung</label>
+                <textarea id="beschreibung" placeholder="Beschreibe dein Projekt" value={beschreibung} onChange={handleBeschreibungChange} onClick={(e) => e.stopPropagation()}></textarea>
             </div>
             <div className="input-gruppe">
                 <label>Tech-Stack</label>
@@ -99,28 +108,28 @@ const EntwurfPopup = ({onClose}) => {
         <div className="feature-section">
             <h2>Projekt Features</h2>
             <div className="input-gruppe">
-                <label>Feature 1: </label>
-                <input type="text" placeholder="" />
+                <label htmlFor="feature1">Feature 1: </label>
+                <input id="feature1" type="text" placeholder="" />
             </div>
             <div className="input-gruppe">
-                <label>Feature 2: </label>
-                <input type="text" placeholder="" />
+                <label htmlFor="feature2">Feature 2: </label>
+                <input id="feature2" type="text" placeholder="" />
             </div>
             <div className="input-gruppe">
-                <label>Feature 3: </label>
-                <input type="text" placeholder="" />
+                <label htmlFor="feature3">Feature 3: </label>
+                <input id="feature3" type="text" placeholder="" />
             </div>
             <div className="input-gruppe">
-                <label>Feature 4: </label>
-                <input type="text" placeholder="" />
+                <label htmlFor="feature4">Feature 4: </label>
+                <input id="feature4" type="text" placeholder="" />
             </div>
             <div className="input-gruppe">
-                <label>Feature 5: </label>
-                <input type="text" placeholder="" />
+                <label htmlFor="feature5">Feature 5: </label>
+                <input id="feature5" type="text" placeholder="" />
             </div>
             <div className="input-gruppe">
-                <label>Feature 6: </label>
-                <input type="text" placeholder="" />
+                <label htmlFor="feature6">Feature 6: </label>
+                <input id="feature6" type="text" placeholder="" />
             </div>
         </div>);
     }
@@ -171,6 +180,12 @@ const EntwurfPopup = ({onClose}) => {
         e.stopPropagation();
     };
 
+    const handleOverlayClick = (e) => {
+        if (e.target === e.currentTarget) {
+            onClose();
+        }
+    };
+
     const gerenderteSection = () => {
         switch(selectedSection){
             case "beschreibung": return <BeschreibungSection/>;
@@ -182,17 +197,17 @@ const EntwurfPopup = ({onClose}) => {
     };
 
     return(
-        <div className="entwurf-popup-overlay" onClick={onClose}>
+        <div className="entwurf-popup-overlay" onClick={handleOverlayClick}>
             <div className="entwurf-popup" onClick={handlePopupClick}>
                 <div className="inhalte-sidebar">
                     <h3> Entwurf Planen </h3>
                     <ul>
-                        <li onClick={() => handleSelectedSection("beschreibung")}><i className='bx bx-edit' ></i> Beschreibung </li>  {/* Projektname, Beschreibung, Tech-stack, */}
-                        <li onClick={() => handleSelectedSection("feature")}><i className='bx bx-list-plus'></i> Features </li>  {/* Features, */}
-                        <li onClick={() => handleSelectedSection("hochladen")}><i className='bx bx-upload' ></i> Hochladen </li>  {/* Inspirations screenshots hochladen, Mockups.. */}
-                        <li onClick={() => handleSelectedSection("informationen")}><i className='bx bx-info-circle' ></i> Informationen </li>  {/* Start- Enddatum, Weitere Notizen, Gedanken..*/}
+                        <li onClick={(e) => { e.stopPropagation(); handleSelectedSection("beschreibung")}}><i className='bx bx-edit' ></i> Beschreibung </li>  {/* Projektname, Beschreibung, Tech-stack, */}
+                        <li onClick={(e) => { e.stopPropagation(); handleSelectedSection("feature")}}><i className='bx bx-list-plus'></i> Features </li>  {/* Features, */}
+                        <li onClick={(e) => { e.stopPropagation(); handleSelectedSection("hochladen")}}><i className='bx bx-upload' ></i> Hochladen </li>  {/* Inspirations screenshots hochladen, Mockups.. */}
+                        <li onClick={(e) => { e.stopPropagation(); handleSelectedSection("informationen")}}><i className='bx bx-info-circle' ></i> Informationen </li>  {/* Start- Enddatum, Weitere Notizen, Gedanken..*/}
                     </ul>
-                    <button> Speichern </button>
+                    <button onClick={(e) => e.stopPropagation()}> Speichern </button>
                 </div>
                 <div className="content-container">
                     {gerenderteSection()}
