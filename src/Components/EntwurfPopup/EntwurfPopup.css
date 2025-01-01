@@ -221,3 +221,24 @@
     min-height: 120px;
     resize: none;
 }
+
+#hochladen-input{
+    cursor: pointer;
+}
+
+.angezeigter-file{
+    position: relative;
+    margin: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.angezeigter-file i{
+    top: 5px;
+    right: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    position: absolute;
+    font-weight: 600;
+}
