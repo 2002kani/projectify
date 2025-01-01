@@ -1,10 +1,10 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import "./EntwurfPopup.css"
 
 const EntwurfPopup = ({onClose}) => {
     
-    const [projektname, setProjektname] = useState("");
-    const [beschreibung, setBeschreibung] = useState("");
+    const projektnameRef = useRef("");
+    const beschreibungRef = useRef("");
     const [selectedSection, setSelectedSection] = useState("beschreibung");
     const [ausgewählerStack, setAusgewählerStack] = useState([]);
 
@@ -12,11 +12,11 @@ const EntwurfPopup = ({onClose}) => {
     const [mockupFiles, setMockupFiles] = useState([]);
 
     const handleProjektnameChange = (e) => {
-        setProjektname(e.target.value);
+        projektnameRef.current = e.target.value;
     }
 
     const handleBeschreibungChange = (e) => {
-        setBeschreibung(e.target.value);
+        beschreibungRef.current = e.target.value;
     }
 
     const handleAusgewählterStack = (stack) => {
@@ -67,11 +67,11 @@ const EntwurfPopup = ({onClose}) => {
             <h2>Projektbeschreibung</h2>
             <div className="input-gruppe">
                 <label htmlFor="projektname" >Projektname</label>
-                <input id="projektname" type="text" placeholder="Gib den Projektnamen ein" value={projektname} onChange={handleProjektnameChange} onClick={(e) => e.stopPropagation()}/>
+                <input id="projektname" type="text" placeholder="Gib den Projektnamen ein" defaultValue={projektnameRef.current} onChange={handleProjektnameChange}/>
             </div>
             <div className="input-gruppe">
                 <label htmlFor="beschreibung">Beschreibung</label>
-                <textarea id="beschreibung" placeholder="Beschreibe dein Projekt" value={beschreibung} onChange={handleBeschreibungChange} onClick={(e) => e.stopPropagation()}></textarea>
+                <textarea id="beschreibung" placeholder="Beschreibe dein Projekt" defaultValue={beschreibungRef.current} onChange={handleBeschreibungChange}></textarea>
             </div>
             <div className="input-gruppe">
                 <label>Tech-Stack</label>
