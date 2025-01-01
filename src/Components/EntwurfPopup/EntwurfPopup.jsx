@@ -7,6 +7,8 @@ const EntwurfPopup = ({onClose}) => {
     const [ausgewählerStack, setAusgewählerStack] = useState([]);
     const [files, setFiles] = useState([]);
     const [mockupFiles, setMockupFiles] = useState([]);
+    const [projektname, setProjektname] = useState("");
+    const [beschreibung, setBeschreibung] = useState("");
 
     const handleAusgewählterStack = (stack) => {
         if (!ausgewählerStack.includes(stack)){
@@ -56,11 +58,11 @@ const EntwurfPopup = ({onClose}) => {
             <h2>Projektbeschreibung</h2>
             <div className="input-gruppe">
                 <label>Projektname</label>
-                <input type="text" placeholder="Gib den Projektnamen ein" />
+                <input type="text" placeholder="Gib den Projektnamen ein" value={projektname} onChange={(e) => setProjektname(e.target.value)}/>
             </div>
             <div className="input-gruppe">
                 <label>Beschreibung</label>
-                <textarea placeholder="Beschreibe dein Projekt"></textarea>
+                <textarea placeholder="Beschreibe dein Projekt" value={beschreibung} onChange={(e) => setBeschreibung(e.target.value)}></textarea>
             </div>
             <div className="input-gruppe">
                 <label>Tech-Stack</label>
