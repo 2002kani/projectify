@@ -5,7 +5,7 @@ const EntwurfPopup = ({onClose, projektnameRef, beschreibungRef, ausgewählerSta
                        feature1Ref, feature2Ref, feature3Ref, feature4Ref, feature5Ref, feature6Ref,
                         files, setFiles, mockupFiles, setMockupFiles,
                          projektnotizenRef, startdatumRef,
-                          onSpeichern}) => {
+                          onSpeichern, changedStack, gelöschterStack}) => {
     
     {/* Beschreibung Section */}
     const [selectedSection, setSelectedSection] = useState("beschreibung");
@@ -18,7 +18,7 @@ const EntwurfPopup = ({onClose, projektnameRef, beschreibungRef, ausgewählerSta
         beschreibungRef.current = e.target.value;
     }
 
-    const handleAusgewählterStack = (stack) => {
+    {/*const handleAusgewählterStack = (stack) => {
         if (!ausgewählerStack.includes(stack)){
             setAusgewählerStack([...ausgewählerStack, stack]);
         }
@@ -26,7 +26,7 @@ const EntwurfPopup = ({onClose, projektnameRef, beschreibungRef, ausgewählerSta
 
     const handleLöschenStack = (entfernenderStack) => {
         setAusgewählerStack(ausgewählerStack.filter(stack => stack !== entfernenderStack));
-    }
+    }*/}
 
 
     const handleSelectedSection = (section) => {
@@ -76,7 +76,7 @@ const EntwurfPopup = ({onClose, projektnameRef, beschreibungRef, ausgewählerSta
             <div className="input-gruppe">
                 <label>Tech-Stack</label>
                 <div className="select-techstack">
-                    <select onChange={(e) => handleAusgewählterStack(e.target.value)}>
+                    <select onChange={(e) => changedStack(e.target.value)}>
                     <option defaultValuevalue={""}> Auswählen</option>
                         <option value={"Javascript"}> Javascript</option>
                         <option value={"Typescript"}> Typescript</option>
@@ -94,7 +94,7 @@ const EntwurfPopup = ({onClose, projektnameRef, beschreibungRef, ausgewählerSta
                         {ausgewählerStack.map((stack, index)=>(
                             <div className="selected-stack" key={index}>
                                 <p>{stack}</p>
-                                <i className='bx bx-x' onClick={() => handleLöschenStack(stack)}></i>
+                                <i className='bx bx-x' onClick={() => gelöschterStack(stack)}></i>
                             </div>
                         ))}
                     </div>

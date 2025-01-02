@@ -3,6 +3,7 @@ import Sidebar from "../../Components/Sidebar/sidebar";
 import Titelkarte from "../../Components/Titelkarte/Titelkarte";
 import "./Entwurf.css"
 import EntwurfPopup from "../../Components/EntwurfPopup/EntwurfPopup";
+import ErstellenButton from "../../Components/ErstellenButton/ErstellenButton";
 
 const Entwurf = () => {
 
@@ -60,10 +61,11 @@ const Entwurf = () => {
                 notizenRef.current = "";
                 startRef.current = "";
 
+                setIsEntwurfErstellt(true);
                 setIsEntwurfVisible(false);
         } else {
             alert("Bitte zumindest einen Namen und eine Beschreibung angeben.");
-        return
+            return;
         }
     }
 
@@ -75,9 +77,28 @@ const Entwurf = () => {
         setIsEntwurfErstellt(true);
     }
 
+    {/* Diese Funktion auf onSpeichern nutzen, da die sowohl handleCreateClick, als auch addItem ausführt */}
+    const handleOnSpeichern = () => {
+        addItem();
+        if(nameRef.current !== "" && bechreibungRef !== ""){
+            handleCreateClick();
+        }
+    }
+
+    const handleAusgewählterStack = (stack) => {
+        if (!ausgewählerStack.includes(stack)){
+            setAusgewählerStack([...ausgewählerStack, stack]);
+        }
+    }
+
+    const handleLöschenStack = (entfernenderStack) => {
+        setAusgewählerStack(ausgewählerStack.filter(stack => stack !== entfernenderStack));
+    }
+
     return(
         <div className="enwturf">
-                <div className="entwürfe-kein-entwurf">
+            {!isEntwurfErstellt ? 
+            <div className="entwürfe-kein-entwurf">
                     <div className="eingabe-feld">
                         <div className="information">
                             <h1> Noch kein Entwurf erstellt? </h1>
@@ -85,33 +106,42 @@ const Entwurf = () => {
                         </div>
                         <button className="entwurf-erstellen" onClick={handleEntwurfVisibility}> + </button>
                     </div>
-                </div>
+                </div> : 
+                <>
+                    <Titelkarte titel={"Projekt Entwürfe"} />
+                    <div className="entwurf-inhalt">
+                        <ErstellenButton onClick={handleEntwurfVisibility}/>
+                        {/* HIER BLA BLA.MAP(BLA BLA) */}
+                    </div>
+                </>}
                 {isEntwurfVisible ?
-                    <div className="projekt-inhalt"> {/* Hier vlt noch setAusgewöhlterStack etc.. */}
-                    <EntwurfPopup 
-                    onClose={handleEntwurfVisibility}
-                    projektnameRef={nameRef}
-                    beschreibungRef={bechreibungRef}
-                    ausgewählerStack={ausgewählerStack}
-                    setAusgewählerStack={setAusgewählerStack} 
-                    
-                    feature1Ref={feat1}
-                    feature2Ref={feat2}
-                    feature3Ref={feat3}
-                    feature4Ref={feat4}
-                    feature5Ref={feat5}
-                    feature6Ref={feat6}
-                    
-                    files={files}
-                    setFiles={setFiles}
-                    mockupFiles={mockupFiles}
-                    setMockupFiles={setMockupFiles}
-                    
-                    projektnotizenRef={notizenRef}
-                    startdatumRef={startRef}
-                    
-                    onSpeichern={addItem}/>
-                </div>: ""}
+                    <div className="projekt-inhalt">
+                        <EntwurfPopup 
+                        onClose={handleEntwurfVisibility}
+                        projektnameRef={nameRef}
+                        beschreibungRef={bechreibungRef}
+                        ausgewählerStack={ausgewählerStack}
+                        setAusgewählerStack={setAusgewählerStack} 
+                        
+                        feature1Ref={feat1}
+                        feature2Ref={feat2}
+                        feature3Ref={feat3}
+                        feature4Ref={feat4}
+                        feature5Ref={feat5}
+                        feature6Ref={feat6}
+                        
+                        files={files}
+                        setFiles={setFiles}
+                        mockupFiles={mockupFiles}
+                        setMockupFiles={setMockupFiles}
+                        
+                        projektnotizenRef={notizenRef}
+                        startdatumRef={startRef}
+                        
+                        onSpeichern={handleOnSpeichern}
+                        changedStack={handleAusgewählterStack}
+                        gelöschterStack={handleLöschenStack}/>
+                    </div>: ""}
         </div>
     );
 }
