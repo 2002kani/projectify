@@ -157,22 +157,26 @@ const EntwurfPopup = ({onClose}) => {
                 <label> Inspiration </label>
                 <input type="file" multiple accept="image/*" onChange={handleFileChange} />
             </div>
-            {files.map((file, index)=>(
-                <div key={index} className="angezeigter-file">
-                    <img src={URL.createObjectURL(file)} alt="preview" style={{ width: "100px", height: "100px", objectFit: "cover" }}></img>
-                    <i className='bx bx-x' onClick={()=> handleRemoveFile(index)}></i>
-                </div>
-            ))}
+            <div className="angezeigter-file-container">
+                {files.map((file, index)=>(
+                    <div key={index} className="angezeigter-file">
+                        <img src={URL.createObjectURL(file)} alt="preview" style={{ width: "120px", height: "200px", objectFit: "cover", transition: "transform 0.3s ease", borderRadius: "10px" }}></img>
+                        <i className='bx bx-x' onClick={()=> handleRemoveFile(index)}></i>
+                    </div>
+                ))}
+            </div>
             <div className="input-gruppe">
                 <label> Mockups </label>
                 <input type="file" multiple accept="image/*" onChange={handleMockupFileChange} />
             </div>
-            {mockupFiles.map((mockupfile, index)=>(
-                <div key={index} className="angezeigter-file">
-                    <img src={URL.createObjectURL(mockupfile)} alt="preview" style={{ width: "100px", height: "100px", objectFit: "cover" }}></img>
-                    <i className='bx bx-x' onClick={()=> handleRemoveMockup(index)}></i>
-                </div>
-            ))}
+            <div className="angezeigter-file-container">
+                {mockupFiles.map((mockupfile, index)=>(
+                    <div key={index} className="angezeigter-file">
+                        <img src={URL.createObjectURL(mockupfile)} alt="preview" style={{ width: "120px", height: "200px", objectFit: "cover", transition: "transform 0.3s ease", borderRadius: "10px" }}></img>
+                        <i className='bx bx-x' onClick={()=> handleRemoveMockup(index)}></i>
+                    </div>
+                ))}
+            </div>
         </div>);
     }
 
