@@ -31,7 +31,7 @@ const Ideen = () => {
     const handleClose = () => {
         setIsPopupVisible(false);
     } 
-
+ 
     return(
         <div className="ideen">
             

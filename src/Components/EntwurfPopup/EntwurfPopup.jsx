@@ -1,13 +1,14 @@
 import { useRef, useState } from "react";
 import "./EntwurfPopup.css"
 
-const EntwurfPopup = ({onClose}) => {
+const EntwurfPopup = ({onClose, projektnameRef, beschreibungRef, ausgewählerStack,
+                       feature1Ref, feature2Ref, feature3Ref, feature4Ref, feature5Ref, feature6Ref,
+                        files, setFiles, mockupFiles, setMockupFiles,
+                         projektnotizenRef, startdatumRef,
+                          onSpeichern}) => {
     
     {/* Beschreibung Section */}
-    const projektnameRef = useRef("");
-    const beschreibungRef = useRef("");
     const [selectedSection, setSelectedSection] = useState("beschreibung");
-    const [ausgewählerStack, setAusgewählerStack] = useState([]);
 
     const handleProjektnameChange = (e) => {
         projektnameRef.current = e.target.value;
@@ -26,22 +27,6 @@ const EntwurfPopup = ({onClose}) => {
     const handleLöschenStack = (entfernenderStack) => {
         setAusgewählerStack(ausgewählerStack.filter(stack => stack !== entfernenderStack));
     }
-
-    {/* Features Section */}
-    const feature1Ref = useRef("");
-    const feature2Ref = useRef("");
-    const feature3Ref = useRef("");
-    const feature4Ref = useRef("");
-    const feature5Ref = useRef("");
-    const feature6Ref = useRef("");
-
-    {/* Hochladen Section */}
-    const [files, setFiles] = useState([]);
-    const [mockupFiles, setMockupFiles] = useState([]);
-
-    {/* Information Section */}
-    const projektnotizenRef = useRef("");
-    const startdatumRef = useRef("");
 
 
     const handleSelectedSection = (section) => {
@@ -226,7 +211,7 @@ const EntwurfPopup = ({onClose}) => {
                         <li onClick={(e) => { e.stopPropagation(); handleSelectedSection("hochladen")}}><i className='bx bx-upload' ></i> Hochladen </li>  {/* Inspirations screenshots hochladen, Mockups.. */}
                         <li onClick={(e) => { e.stopPropagation(); handleSelectedSection("informationen")}}><i className='bx bx-info-circle' ></i> Informationen </li>  {/* Start- Enddatum, Weitere Notizen, Gedanken..*/}
                     </ul>
-                    <button onClick={(e) => e.stopPropagation()}> Speichern </button>
+                    <button onClick={onSpeichern}> Speichern </button>
                 </div>
                 <div className="content-container">
                     {gerenderteSection()}
