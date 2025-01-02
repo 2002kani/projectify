@@ -3,13 +3,11 @@ import "./EntwurfPopup.css"
 
 const EntwurfPopup = ({onClose}) => {
     
+    {/* Beschreibung Section */}
     const projektnameRef = useRef("");
     const beschreibungRef = useRef("");
     const [selectedSection, setSelectedSection] = useState("beschreibung");
     const [ausgewählerStack, setAusgewählerStack] = useState([]);
-
-    const [files, setFiles] = useState([]);
-    const [mockupFiles, setMockupFiles] = useState([]);
 
     const handleProjektnameChange = (e) => {
         projektnameRef.current = e.target.value;
@@ -28,6 +26,23 @@ const EntwurfPopup = ({onClose}) => {
     const handleLöschenStack = (entfernenderStack) => {
         setAusgewählerStack(ausgewählerStack.filter(stack => stack !== entfernenderStack));
     }
+
+    {/* Features Section */}
+    const feature1Ref = useRef("");
+    const feature2Ref = useRef("");
+    const feature3Ref = useRef("");
+    const feature4Ref = useRef("");
+    const feature5Ref = useRef("");
+    const feature6Ref = useRef("");
+
+    {/* Hochladen Section */}
+    const [files, setFiles] = useState([]);
+    const [mockupFiles, setMockupFiles] = useState([]);
+
+    {/* Information Section */}
+    const projektnotizenRef = useRef("");
+    const startdatumRef = useRef("");
+
 
     const handleSelectedSection = (section) => {
         setSelectedSection(section);
@@ -77,7 +92,7 @@ const EntwurfPopup = ({onClose}) => {
                 <label>Tech-Stack</label>
                 <div className="select-techstack">
                     <select onChange={(e) => handleAusgewählterStack(e.target.value)}>
-                    <option value={""} disabled> Auswählen</option>
+                    <option defaultValuevalue={""}> Auswählen</option>
                         <option value={"Javascript"}> Javascript</option>
                         <option value={"Typescript"}> Typescript</option>
                         <option value={"CSS"}> CSS</option>
@@ -109,27 +124,27 @@ const EntwurfPopup = ({onClose}) => {
             <h2>Projekt Features</h2>
             <div className="input-gruppe">
                 <label htmlFor="feature1">Feature 1: </label>
-                <input id="feature1" type="text" placeholder="" />
+                <input id="feature1" type="text" placeholder="" defaultValue={feature1Ref.current} onChange={(e)=> feature1Ref.current = e.target.value}/>
             </div>
             <div className="input-gruppe">
                 <label htmlFor="feature2">Feature 2: </label>
-                <input id="feature2" type="text" placeholder="" />
+                <input id="feature2" type="text" placeholder="" defaultValue={feature2Ref.current} onChange={(e)=> feature2Ref.current = e.target.value} />
             </div>
             <div className="input-gruppe">
                 <label htmlFor="feature3">Feature 3: </label>
-                <input id="feature3" type="text" placeholder="" />
+                <input id="feature3" type="text" placeholder="" defaultValue={feature3Ref.current} onChange={(e)=> feature3Ref.current = e.target.value}/>
             </div>
             <div className="input-gruppe">
                 <label htmlFor="feature4">Feature 4: </label>
-                <input id="feature4" type="text" placeholder="" />
+                <input id="feature4" type="text" placeholder="" defaultValue={feature4Ref.current} onChange={(e)=> feature4Ref.current = e.target.value}/>
             </div>
             <div className="input-gruppe">
                 <label htmlFor="feature5">Feature 5: </label>
-                <input id="feature5" type="text" placeholder="" />
+                <input id="feature5" type="text" placeholder="" defaultValue={feature5Ref.current} onChange={(e)=> feature5Ref.current = e.target.value}/>
             </div>
             <div className="input-gruppe">
                 <label htmlFor="feature6">Feature 6: </label>
-                <input id="feature6" type="text" placeholder="" />
+                <input id="feature6" type="text" placeholder="" defaultValue={feature6Ref.current} onChange={(e)=> feature6Ref.current = e.target.value}/>
             </div>
         </div>);
     }
@@ -167,11 +182,11 @@ const EntwurfPopup = ({onClose}) => {
             <h2>Weitere Informationen</h2>
             <div className="input-gruppe">
                 <label> Startdatum </label>
-                <input type="date" />
+                <input type="date" defaultValue={startdatumRef.current} onChange={(e)=> startdatumRef.current = e.target.value}/>
             </div>
             <div className="input-gruppe">
                 <label> Notizen zum Projekt: </label>
-                <textarea type="text" placeholder="" />
+                <textarea type="text" placeholder="" defaultValue={projektnotizenRef.current} onChange={(e)=> projektnotizenRef.current = e.target.value}/>
             </div>
         </div>);
     }
