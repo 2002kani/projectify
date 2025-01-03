@@ -148,7 +148,7 @@ const Entwurf = () => {
                                     <div className="karte-bottom">
                                         <p>{item.startdatum}</p>
                                         <p className="stack-farbe">{item.stack}</p>
-                                    </div>
+                                    </div> 
                                 </div>
                             </div>
                         ))}
