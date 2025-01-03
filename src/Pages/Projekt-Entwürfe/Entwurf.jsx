@@ -111,7 +111,47 @@ const Entwurf = () => {
                     <Titelkarte titel={"Projekt Entwürfe"} />
                     <div className="entwurf-inhalt">
                         <ErstellenButton onClick={handleEntwurfVisibility}/>
-                        {/* HIER BLA BLA.MAP(BLA BLA) */}
+                        {entwurfItems.map((item, index) => (
+                            <div className="entwurf-karte" key={index}>
+                                <div className="karte-top">
+                                    <h1>{item.titel}</h1>
+                                    <div className="karte-top-links">
+                                        <i className="bx bx-x"></i>
+                                        <i className='bx bx-edit'></i>
+                                    </div>
+                                </div>
+                                <div className="karte-main">
+                                    <div className="karte-beschreibung">
+                                        <p>{item.beschreibung}</p>
+                                    </div>
+                                    <div className="karte-features">
+                                        <div className="features-links">
+                                            {item.feature1 ?
+                                            <p>{item.feature1}</p> : ""}
+                                            {item.feature2 ?
+                                            <p>{item.feature2}</p> : ""}
+                                            {item.feature3 ?
+                                            <p>{item.feature3}</p> : ""}
+                                        </div>
+                                        <div className="features-rechts">
+                                            {item.feature4 ?
+                                            <p>{item.feature4}</p> : ""}
+                                            {item.feature5 ?
+                                            <p>{item.feature5}</p> : ""}
+                                            {item.feature6 ?
+                                            <p>{item.feature6}</p> : ""}  
+                                        </div>
+                                    </div>
+                                    <div className="karte-information">
+                                        <p>{item.notizen}</p>
+                                    </div>
+                                    <div className="karte-bottom">
+                                        <p>{item.startdatum}</p>
+                                        <p className="stack-farbe">{item.stack}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        ))}
                     </div>
                 </>}
                 {isEntwurfVisible ?

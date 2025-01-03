@@ -61,3 +61,115 @@
     margin-top: 8px;
     color: #5d5d5d;
 }
+
+.entwurf-karte{
+    background: #eee;
+    max-width: 20rem;
+    padding: 15px;
+    border-radius: 10px;
+}
+
+.entwurf-karte:hover{
+    transition: 0.25s;
+    transform:translateY(-6px);
+}
+
+.entwurf-karte .karte-top{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.karte-top-links{
+    display: flex;
+    gap: 5px;
+}
+
+.karte-top h1{
+    color: #2e2e2e;
+    font-size: 25px;
+    cursor: default;
+}
+
+.karte-top-links i{
+    background: #fff;
+    height: 30px;
+    width: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 19px;
+}
+
+.karte-top-links i:hover{
+    background: #f7f7f7;
+    transition: 0.25s;
+}
+
+.karte-main{
+    margin-top: 1.1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.9rem;
+}
+
+.karte-main .karte-beschreibung{
+    color: #626262;
+    background: #fff;
+    padding: 13px;
+    border-radius: 10px;
+    margin-top: 10px;
+}
+
+.karte-main .karte-features{
+    display: flex;
+    gap: 5px;
+    margin: 20px 0px 20px 0px;
+}
+
+.features-links, .features-rechts{
+    background: #2e2e2e;
+    border-radius: 8px;
+    width: 50%;
+    overflow-y: scroll;
+}
+
+.karte-features p{
+    color: #2e2e2e;
+    background: #fff;
+    padding: 10px;
+    border-radius: 6px;
+    font-weight: 500;
+    margin: 10px;
+    cursor: default;
+}
+
+.karte-features p:hover{
+    background: #dadada;
+    transition: 0.25s;
+}
+
+.karte-information{
+    margin-bottom: 20px;
+}
+
+.karte-bottom{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.karte-bottom p{
+    font-weight: 600;
+}
+
+.stack-farbe{
+    background: #82c980;
+    color: #fff;
+    padding: 6px;
+    border-radius: 8px;
+    overflow-y: scroll;
+    width: 65%;
+}
