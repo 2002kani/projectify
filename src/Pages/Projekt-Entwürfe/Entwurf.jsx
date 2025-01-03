@@ -101,7 +101,7 @@ const Entwurf = () => {
 
     return(
         <div className="enwturf">
-            {!isEntwurfErstellt ? 
+            {!isEntwurfErstellt ?  
             <div className="entwürfe-kein-entwurf">
                     <div className="eingabe-feld">
                         <div className="information">

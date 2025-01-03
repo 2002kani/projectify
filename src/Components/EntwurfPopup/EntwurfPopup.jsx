@@ -60,7 +60,6 @@ const EntwurfPopup = ({onClose, projektnameRef, beschreibungRef, ausgewählerSta
     };
 
 
-
     const BeschreibungSection = ()=>{
         return(
         <div className="beschreibung-section">

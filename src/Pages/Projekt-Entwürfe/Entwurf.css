@@ -19,7 +19,10 @@
     box-shadow: rgba(0, 0, 0, 0.02) 0px 4px 12px;
     position: relative;
     transition: all 0.3s ease;
-    overflow-y: scroll;
+    overflow-x: scroll;
+    display: grid;  /* Grid Layout */
+    grid-template-columns: repeat(auto-fit, minmax(150px, 350px));
+    gap: 20px;
 }
 
 .app.closed .entwurf-inhalt {
@@ -67,6 +70,7 @@
     max-width: 20rem;
     padding: 15px;
     border-radius: 10px;
+    width: 300px;
 }
 
 .entwurf-karte:hover{

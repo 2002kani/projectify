@@ -30,8 +30,12 @@ const Ideen = () => {
 
     const handleClose = () => {
         setIsPopupVisible(false);
-    } 
- 
+    }
+
+    const handleRemoveCard = (entfernendeKarte) => {
+        setItems((prevItems) => prevItems.filter((item) => item !== entfernendeKarte));
+    }
+  
     return(
         <div className="ideen">
             
@@ -50,6 +54,9 @@ const Ideen = () => {
                 <div className="ideenkarten">
                     {items.map((item, index)=>(
                         <div key={index} className="idee-karte">
+                            <div className="ideen-top">
+                                <i className="bx bx-x" onClick={() => handleRemoveCard(item)}></i>
+                            </div>
                             <h2>{item.titel}</h2>
                             <p>{item.beschreibung}</p>
                         </div>
