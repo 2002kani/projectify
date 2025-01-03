@@ -7,9 +7,9 @@
     align-items: center;
     justify-content: center;
     gap: 8px;
-    padding: 4px;
+    padding: 6px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    width: 150px;
+    max-width: 180px;
     border: none;
     height: 40px;
     background: #2e2e2e;

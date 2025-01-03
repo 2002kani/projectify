@@ -1,8 +1,8 @@
 import "./ErstellenButton.css"
 
-const ErstellenButton = ({onClick}) => {
+const ErstellenButton = ({onClick, name}) => {
     return(
-        <button className="erstellen-btn" onClick={onClick}> Idee Hinzufügen <i className='bx bx-plus-circle'></i> </button>
+        <button className="erstellen-btn" onClick={onClick}> {name} Hinzufügen <i className='bx bx-plus-circle'></i> </button>
     );
 }
 

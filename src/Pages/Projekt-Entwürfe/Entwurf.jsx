@@ -95,6 +95,10 @@ const Entwurf = () => {
         setAusgewählerStack(ausgewählerStack.filter(stack => stack !== entfernenderStack));
     }
 
+    const handleRemoveCard = (entfernenderItem) => {
+        setEntwurfItems((prevItems) => prevItems.filter((item) => item !== entfernenderItem));
+    };
+
     return(
         <div className="enwturf">
             {!isEntwurfErstellt ? 
@@ -110,13 +114,13 @@ const Entwurf = () => {
                 <>
                     <Titelkarte titel={"Projekt Entwürfe"} />
                     <div className="entwurf-inhalt">
-                        <ErstellenButton onClick={handleEntwurfVisibility}/>
+                        <ErstellenButton onClick={handleEntwurfVisibility} name={"Entwurf"}/>
                         {entwurfItems.map((item, index) => (
                             <div className="entwurf-karte" key={index}>
                                 <div className="karte-top">
                                     <h1>{item.titel}</h1>
                                     <div className="karte-top-links">
-                                        <i className="bx bx-x"></i>
+                                        <i className="bx bx-x" onClick={() => handleRemoveCard(item)}></i>
                                         <i className='bx bx-edit'></i>
                                     </div>
                                 </div>

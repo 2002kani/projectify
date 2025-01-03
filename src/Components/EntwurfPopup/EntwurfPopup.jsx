@@ -77,7 +77,7 @@ const EntwurfPopup = ({onClose, projektnameRef, beschreibungRef, ausgewählerSta
                 <label>Tech-Stack</label>
                 <div className="select-techstack">
                     <select onChange={(e) => changedStack(e.target.value)}>
-                    <option defaultValuevalue={""}> Auswählen</option>
+                    <option defaultValue={""}> Auswählen</option>
                         <option value={"Javascript"}> Javascript</option>
                         <option value={"Typescript"}> Typescript</option>
                         <option value={"CSS"}> CSS</option>

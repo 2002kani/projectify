@@ -92,7 +92,7 @@
 }
 
 .karte-top-links i{
-    background: #fff;
+    background: #2e2e2e;
     height: 30px;
     width: 30px;
     display: flex;
@@ -101,10 +101,11 @@
     border-radius: 8px;
     cursor: pointer;
     font-size: 19px;
+    color: #fff;
 }
 
 .karte-top-links i:hover{
-    background: #f7f7f7;
+    background: #3a3a3a;
     transition: 0.25s;
 }
 
