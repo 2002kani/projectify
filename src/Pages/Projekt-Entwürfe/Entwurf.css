@@ -138,7 +138,6 @@
     background: #fff;
     border-radius: 8px;
     width: 50%;
-    overflow-y: scroll;
 }
 
 .karte-features p{
@@ -149,6 +148,8 @@
     font-weight: 500;
     margin: 10px;
     cursor: default;
+    overflow-y: scroll;
+    scrollbar-width: none;
 }
 
 .karte-features p:hover{
