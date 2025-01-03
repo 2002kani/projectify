@@ -165,11 +165,21 @@
     font-weight: 600;
 }
 
+.karte-bottom .start-karte{
+    width: 45%;
+}
+
 .stack-farbe{
     background: #82c980;
     color: #fff;
     padding: 6px;
     border-radius: 8px;
+    margin-left: 5px;
+}
+
+.stack-farbe-scroll{
+    display: flex;
+    width: 100%;
     overflow-y: scroll;
-    width: 65%;
+    scrollbar-width: none;
 }

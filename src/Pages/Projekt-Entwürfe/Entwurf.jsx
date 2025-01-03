@@ -146,9 +146,15 @@ const Entwurf = () => {
                                         <p>{item.notizen}</p>
                                     </div>
                                     <div className="karte-bottom">
-                                        <p>{item.startdatum}</p>
-                                        <p className="stack-farbe">{item.stack}</p>
-                                    </div> 
+                                        <p className="start-karte">{item.startdatum}</p>
+                                        <div className="stack-farbe-scroll">
+                                        {Array.isArray(item.stack) ? (
+                                            item.stack.map((stack, index) => (
+                                                <p className="stack-farbe" key={index}>{stack}</p>
+                                            ))
+                                        ) : ""}  
+                                        </div>     
+                                    </div>
                                 </div>
                             </div>
                         ))}
