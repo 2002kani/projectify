@@ -130,7 +130,7 @@
 }
 
 .features-links, .features-rechts{
-    background: #2e2e2e;
+    background: #fff;
     border-radius: 8px;
     width: 50%;
     overflow-y: scroll;
@@ -138,7 +138,7 @@
 
 .karte-features p{
     color: #2e2e2e;
-    background: #fff;
+    background: #eee;
     padding: 10px;
     border-radius: 6px;
     font-weight: 500;
