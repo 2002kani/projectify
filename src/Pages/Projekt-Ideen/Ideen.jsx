@@ -38,7 +38,6 @@ const Ideen = () => {
   
     return(
         <div className="ideen">
-            
             <Titelkarte titel={"Projekt Ideen"}/>
             <div className="ideen-inhalt">
                 <ErstellenButton onClick={togglePopupVisiblity}/>
