@@ -99,6 +99,12 @@ const Entwurf = () => {
         setEntwurfItems((prevItems) => prevItems.filter((item) => item !== entfernenderItem));
     };
 
+    const kartenKlick = (e) => {
+        const key = e.currentTarget.getAttribute("data-key");
+        console.log(key);
+    }
+
+
     return(
         <div className="enwturf">
             {!isEntwurfErstellt ?  
@@ -116,7 +122,7 @@ const Entwurf = () => {
                     <div className="entwurf-inhalt">
                         <ErstellenButton onClick={handleEntwurfVisibility} name={"Entwurf"}/>
                         {entwurfItems.map((item, index) => (
-                            <div className="entwurf-karte" key={index}>
+                            <div className="entwurf-karte" key={index} data-key={index} onClick={kartenKlick}>
                                 <div className="karte-top">
                                     <h1>{item.titel}</h1>
                                     <div className="karte-top-links">
@@ -193,6 +199,7 @@ const Entwurf = () => {
                         gelöschterStack={handleLöschenStack}/>
                     </div>: ""}
         </div>
+
     );
 }
 
