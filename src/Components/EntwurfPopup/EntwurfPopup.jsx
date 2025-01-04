@@ -66,7 +66,7 @@ const EntwurfPopup = ({onClose, projektnameRef, beschreibungRef, ausgewählerSta
             <h2>Projektbeschreibung</h2>
             <div className="input-gruppe">
                 <label htmlFor="projektname" >Projektname</label>
-                <input id="projektname" type="text" placeholder="Gib den Projektnamen ein" defaultValue={projektnameRef.current} onChange={handleProjektnameChange}/>
+                <input id="projektname" type="text" placeholder="Gib den Projektnamen ein" defaultValue={projektnameRef.current} onChange={handleProjektnameChange} maxLength={20}/>
             </div>
             <div className="input-gruppe">
                 <label htmlFor="beschreibung">Beschreibung</label>

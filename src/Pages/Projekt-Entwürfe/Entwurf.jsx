@@ -95,10 +95,8 @@ const Entwurf = () => {
 
     const handleEntwurfVisibility = () => {
         setIsEntwurfVisible(!isEntwurfVisible);
-        if (isEditing) {
-            setIsEditing(false);
-            setCurrentEditItem(null);
-            
+
+        if (!isEditing) {
             nameRef.current = "";
             bechreibungRef.current = "";
             setAusgewählerStack([]);
@@ -112,6 +110,9 @@ const Entwurf = () => {
             setMockupFiles([]);
             notizenRef.current = "";
             startRef.current = "";
+        } else{
+            setIsEditing(false);
+            setCurrentEditItem(null);
         }
     };
 
@@ -122,34 +123,33 @@ const Entwurf = () => {
     {/* Diese Funktion auf onSpeichern nutzen, da die sowohl handleCreateClick, als auch addItem ausführt */}
     const handleOnSpeichern = () => {
         if(currentEditItem && isEditing){
-            setEntwurfItems(prevItems => prevItems.map(item => {
-                if (item === currentEditItem){
-                    return {
-                        titel: nameRef.current,
-                        beschreibung: bechreibungRef.current,
-                        stack: ausgewählerStack,
-                        feature1: feat1.current,
-                        feature2: feat2.current,
-                        feature3: feat3.current,
-                        feature4: feat4.current,
-                        feature5: feat5.current,
-                        feature6: feat6.current,
-                        projectfiles: files,
-                        projectMockup: mockupFiles,
-                        notizen: notizenRef.current,
-                        startdatum: startRef.current
-                };
-            }
-            return item;
-        }));
+            setEntwurfItems(prevItems => prevItems.filter(item => item !== currentEditItem));
+
+            setEntwurfItems(prevItems => [
+                ...prevItems,
+                {
+                    titel: nameRef.current,
+                    beschreibung: bechreibungRef.current,
+                    stack: ausgewählerStack,
+                    feature1: feat1.current,
+                    feature2: feat2.current,
+                    feature3: feat3.current,
+                    feature4: feat4.current,
+                    feature5: feat5.current,
+                    feature6: feat6.current,
+                    projectfiles: files,
+                    projectMockup: mockupFiles,
+                    notizen: notizenRef.current,
+                    startdatum: startRef.current,
+                },
+            ]);
+
             setIsEditing(false);
             setCurrentEditItem(null);
         } else{
             addItem();
         }
-        if(nameRef.current !== "" && bechreibungRef !== ""){
-            handleCreateClick();
-        }
+        setIsEntwurfVisible(false);
     };
 
     const handleAusgewählterStack = (stack) => {
