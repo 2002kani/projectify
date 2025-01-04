@@ -28,7 +28,7 @@ const Ideen = () => {
         setIsPopupVisible(!isPopupVisible);
     }
 
-    const handleClose = () => {
+    const handleClose = () => { 
         setIsPopupVisible(false);
     }
 
