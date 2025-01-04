@@ -10,6 +10,9 @@ const Entwurf = () => {
     const [isEntwurfErstellt, setIsEntwurfErstellt] = useState(false);
     const [isEntwurfVisible, setIsEntwurfVisible] = useState(false);
 
+    const [isEditing, setIsEditing] = useState(false);
+    const [currentEditItem, setCurrentEditItem] = useState(null);
+
     const [entwurfItems, setEntwurfItems] = useState([]);
 
     const nameRef = useRef("");
@@ -69,9 +72,48 @@ const Entwurf = () => {
         }
     }
 
+    const handleEdit = (item, e) => {
+        e.stopPropagation();
+        setCurrentEditItem(item);
+        setIsEntwurfVisible(true);
+        setIsEditing(true);
+
+        nameRef.current = item.titel;
+        bechreibungRef.current = item.beschreibung
+        setAusgewählerStack(item.stack || []);
+        feat1.current = item.feature1;
+        feat2.current = item.feature2;
+        feat3.current = item.feature3;
+        feat4.current = item.feature4;
+        feat5.current = item.feature5;
+        feat6.current = item.feature6;
+        setFiles(item.projectfiles || []);
+        setMockupFiles(item.projectMockup || []);
+        notizenRef.current = item.notizen;
+        startRef.current = item.startdatum;
+    };
+
     const handleEntwurfVisibility = () => {
         setIsEntwurfVisible(!isEntwurfVisible);
-    }
+        if (isEditing) {
+            setIsEditing(false);
+            setCurrentEditItem(null);
+            
+            nameRef.current = "";
+            bechreibungRef.current = "";
+            setAusgewählerStack([]);
+            feat1.current = "";
+            feat2.current = "";
+            feat3.current = "";
+            feat4.current = "";
+            feat5.current = "";
+            feat6.current = "";
+            setFiles([]);
+            setMockupFiles([]);
+            notizenRef.current = "";
+            startRef.current = "";
+        }
+    };
 
     const handleCreateClick = () => {
         setIsEntwurfErstellt(true);
@@ -79,11 +121,36 @@ const Entwurf = () => {
 
     {/* Diese Funktion auf onSpeichern nutzen, da die sowohl handleCreateClick, als auch addItem ausführt */}
     const handleOnSpeichern = () => {
-        addItem();
+        if(currentEditItem && isEditing){
+            setEntwurfItems(prevItems => prevItems.map(item => {
+                if (item === currentEditItem){
+                    return {
+                        titel: nameRef.current,
+                        beschreibung: bechreibungRef.current,
+                        stack: ausgewählerStack,
+                        feature1: feat1.current,
+                        feature2: feat2.current,
+                        feature3: feat3.current,
+                        feature4: feat4.current,
+                        feature5: feat5.current,
+                        feature6: feat6.current,
+                        projectfiles: files,
+                        projectMockup: mockupFiles,
+                        notizen: notizenRef.current,
+                        startdatum: startRef.current
+                };
+            }
+            return item;
+        }));
+            setIsEditing(false);
+            setCurrentEditItem(null);
+        } else{
+            addItem();
+        }
         if(nameRef.current !== "" && bechreibungRef !== ""){
             handleCreateClick();
         }
-    }
+    };
 
     const handleAusgewählterStack = (stack) => {
         if (!ausgewählerStack.includes(stack)){
@@ -127,7 +194,7 @@ const Entwurf = () => {
                                     <h1>{item.titel}</h1>
                                     <div className="karte-top-links">
                                         <i className="bx bx-x" onClick={() => handleRemoveCard(item)}></i>
-                                        <i className='bx bx-edit'></i>
+                                        <i className='bx bx-edit' onClick={(e) => handleEdit(item, e)}></i>
                                     </div>
                                 </div>
                                 <div className="karte-main">
