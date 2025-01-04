@@ -9,7 +9,6 @@ import IdeenPopup from "../../Components/IdeenPopup/IdeenPopup";
 const Ideen = () => {
 
     const [isPopupVisible, setIsPopupVisible] = useState(false);
-
     const [items, setItems] = useState([]);
     const [ideeTitel, setIdeeTitel] = useState("");
     const [ideeBeschreibung, setIdeeBeschreibung] = useState("");
