@@ -8,7 +8,7 @@ import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom"
 import Dashboard from './Pages/Dashboard/Dashboard.jsx'
 import Error from './Pages/ErrorSeite/Error.jsx'
 import Entwurf from "./Pages/Projekt-Entwürfe/Entwurf.jsx"
-import Ideen from "./Pages/Projekt-Ideen/Ideen.jsx"
+import Ideen from "./Pages/Projekt-Ideen/ideen.jsx"
 import Konversation from "./Pages/Konversationen/Konversation.jsx"
 import Sidebar from './Components/Sidebar/sidebar.jsx'
 import Suche from "./Pages/Suche/Suche.jsx"

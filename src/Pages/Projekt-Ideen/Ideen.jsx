@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Titelkarte from "../../Components/Titelkarte/Titelkarte";
 import "./Ideen.css";
@@ -12,6 +12,13 @@ const Ideen = () => {
     const [items, setItems] = useState([]);
     const [ideeTitel, setIdeeTitel] = useState("");
     const [ideeBeschreibung, setIdeeBeschreibung] = useState("");
+
+    // GET Methode aus Backend rein, weil useEffect dafür sorgt, dass diese beim neuladen immer ausgeführt wird.
+    useEffect(() => {
+        axios.get("http://localhost:5001/ideen")
+            .then((response) => setItems(response.data))
+            .catch((err) => console.log("Fehler beim Abrufen der Ideen: ", err));
+    }, []);
 
     function addItem(){
         if(ideeTitel.trim() && ideeBeschreibung !== ""){
