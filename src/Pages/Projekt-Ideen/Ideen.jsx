@@ -22,10 +22,15 @@ const Ideen = () => {
 
     function addItem(){
         if(ideeTitel.trim() && ideeBeschreibung !== ""){
-            setItems([...items, {titel: ideeTitel, beschreibung: ideeBeschreibung}]);
-            setIdeeTitel("");
-            setIdeeBeschreibung("");
-            setIsPopupVisible(false);
+            const neuIdee = { titel: ideeTitel, beschreibung: ideeBeschreibung}
+            axios.post("http://localhost:5001/ideen", neuIdee)
+                .then((response)=>{
+                    setItems([...items, response.data]);
+                    setIdeeTitel("");
+                    setIdeeBeschreibung("");
+                    setIsPopupVisible(false);
+                })
+                .catch((err)=> alert("Fehler beim speichern der Idee"));
         } else{
             alert("Bitte komplett Ausfüllen");
         }
