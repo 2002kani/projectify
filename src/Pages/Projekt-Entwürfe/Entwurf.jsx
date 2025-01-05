@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import Sidebar from "../../Components/Sidebar/sidebar";
 import Titelkarte from "../../Components/Titelkarte/Titelkarte";
 import "./Entwurf.css"
@@ -32,10 +32,55 @@ const Entwurf = () => {
     const notizenRef = useRef("");
     const startRef = useRef("");
 
-    const addItem = () => {
+    // Laden aller Entwürfe am Start
+    useEffect(()=>{
+        fetchEntwürfe();
+    }, []);
+
+    const fetchEntwürfe = async() => {
+        try{
+            const response = await fetch("http://localhost:5001/entwuerfe");
+            const data = await response.json();
+            setEntwurfItems(data);
+            if(data.length > 0){
+                setIsEntwurfErstellt(true);
+            }
+        } catch(error){
+            console.error("Fehler beim Laden der Entwürfre", error);
+        }
+    };
+
+    const saveEntwurfToDB = async (entwurfData) => {
+        try {
+            const response = await fetch('http://localhost:5001/entwuerfe', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(entwurfData)
+            });
+            const savedEntwurf = await response.json();
+            return savedEntwurf;
+        } catch (error) {
+            console.error('Fehler beim Speichern des Entwurfs:', error);
+            return null;
+        }
+    };
+
+    const deleteEntwurfFromDB = async (id) => {
+        try {
+            await fetch(`http://localhost:5001/entwuerfe/${id}`, {
+                method: 'DELETE'
+            });
+        } catch (error) {
+            console.error('Fehler beim Löschen des Entwurfs:', error);
+        }
+    };
+
+    const addItem = async() => {
         if(nameRef.current !== "" && bechreibungRef.current !== ""){
-            setEntwurfItems([...entwurfItems,  
-                {titel: nameRef.current, 
+            const newEntwurf = {
+                titel: nameRef.current, 
                 beschreibung: bechreibungRef.current, 
                 stack: ausgewählerStack,
                 feature1: feat1.current, 
@@ -47,7 +92,12 @@ const Entwurf = () => {
                 projectfiles: files, 
                 projectMockup: mockupFiles,
                 notizen: notizenRef.current, 
-                startdatum: startRef.current}]);
+                startdatum: startRef.current
+            };
+
+            const savedEntwurf = await saveEntwurfToDB(newEntwurf);
+            if ( savedEntwurf ){
+                setEntwurfItems([...entwurfItems, savedEntwurf]);
 
                 // Alle Felder nach in entwurfItems speichern wieder zurücksetzen
                 nameRef.current = "";
@@ -66,6 +116,9 @@ const Entwurf = () => {
 
                 setIsEntwurfErstellt(true);
                 setIsEntwurfVisible(false);
+            } else {
+                alert("Fehler beim Speichern des Entwurfs");
+            }
         } else {
             alert("Bitte zumindest einen Namen und eine Beschreibung angeben.");
             return;
@@ -116,38 +169,61 @@ const Entwurf = () => {
         }
     };
 
+    const handleRemoveCard = async (entfernenderItem) => {
+        try {
+            await deleteEntwurfFromDB(entfernenderItem._id);
+            setEntwurfItems((prevItems) => 
+                prevItems.filter((item) => item !== entfernenderItem)
+            );
+        } catch (error) {
+            console.error('Fehler beim Löschen der Karte:', error);
+        }
+    };
+
     const handleCreateClick = () => {
         setIsEntwurfErstellt(true);
     }
 
     {/* Diese Funktion auf onSpeichern nutzen, da die sowohl handleCreateClick, als auch addItem ausführt */}
-    const handleOnSpeichern = () => {
+    const handleOnSpeichern = async () => {
         if(currentEditItem && isEditing){
-            setEntwurfItems(prevItems => prevItems.filter(item => item !== currentEditItem));
-
-            setEntwurfItems(prevItems => [
-                ...prevItems,
-                {
-                    titel: nameRef.current,
-                    beschreibung: bechreibungRef.current,
-                    stack: ausgewählerStack,
-                    feature1: feat1.current,
-                    feature2: feat2.current,
-                    feature3: feat3.current,
-                    feature4: feat4.current,
-                    feature5: feat5.current,
-                    feature6: feat6.current,
-                    projectfiles: files,
-                    projectMockup: mockupFiles,
-                    notizen: notizenRef.current,
-                    startdatum: startRef.current,
-                },
-            ]);
-
-            setIsEditing(false);
-            setCurrentEditItem(null);
-        } else{
-            addItem();
+            const updatedEntwurf = {
+                titel: nameRef.current,
+                beschreibung: bechreibungRef.current,
+                stack: ausgewählerStack,
+                feature1: feat1.current,
+                feature2: feat2.current,
+                feature3: feat3.current,
+                feature4: feat4.current,
+                feature5: feat5.current,
+                feature6: feat6.current,
+                projectfiles: files,
+                projectMockup: mockupFiles,
+                notizen: notizenRef.current,
+                startdatum: startRef.current
+            };
+    
+            try {
+                // Lösche den alten Entwurf
+                await deleteEntwurfFromDB(currentEditItem._id);
+                // Speichere den aktualisierten Entwurf
+                const savedEntwurf = await saveEntwurfToDB(updatedEntwurf);
+                
+                if (savedEntwurf) {
+                    setEntwurfItems(prevItems => 
+                        prevItems.map(item => 
+                            item === currentEditItem ? savedEntwurf : item
+                        )
+                    );
+                }
+    
+                setIsEditing(false);
+                setCurrentEditItem(null);
+            } catch (error) {
+                console.error('Fehler beim Aktualisieren des Entwurfs:', error);
+            }
+        } else {
+            await addItem();
         }
         setIsEntwurfVisible(false);
     };
@@ -161,10 +237,6 @@ const Entwurf = () => {
     const handleLöschenStack = (entfernenderStack) => {
         setAusgewählerStack(ausgewählerStack.filter(stack => stack !== entfernenderStack));
     }
-
-    const handleRemoveCard = (entfernenderItem) => {
-        setEntwurfItems((prevItems) => prevItems.filter((item) => item !== entfernenderItem));
-    };
 
     const kartenKlick = (e) => {
         const key = e.currentTarget.getAttribute("data-key");

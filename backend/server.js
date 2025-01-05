@@ -44,7 +44,7 @@ const Entwurf = mongoose.model("Entwurf", entwurfSchema, "Projekt-Entwürfe");
 
 
 // Routen Entwürfe
-app.get("/entwürfe", async (req, res) => {
+app.get("/entwuerfe", async (req, res) => {
     try{
         const entwürfe = await Entwurf.find();
         res.json(entwürfe);
@@ -52,7 +52,7 @@ app.get("/entwürfe", async (req, res) => {
         res.status(500).json({ message: "Fehler beim Abrufen der Ideen route" })
     }
 });
-app.post("/entwürfe", async (req, res) => {
+app.post("/entwuerfe", async (req, res) => {
     const { titel, beschreibung, stack, feature1, feature2, feature3, 
             feature4, feature5, feature6, projectfiles, projectMockup, 
             startdatum, notizen } = req.body;
@@ -68,7 +68,7 @@ app.post("/entwürfe", async (req, res) => {
         res.status(400).json({ message: "Fehler beim Speichern des Entwurfs"});
     }
 });
-app.delete("/entwürfe/:id", async (req, res) => {
+app.delete("/entwuerfe/:id", async (req, res) => {
     const {id} = req.params;
     try{
         await Entwurf.findByIdAndDelete(id);
