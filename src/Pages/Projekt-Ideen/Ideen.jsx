@@ -20,9 +20,10 @@ const Ideen = () => {
             .catch((err) => console.log("Fehler beim Abrufen der Ideen: ", err));
     }, []);
 
+    // POST Methode rein
     function addItem(){
         if(ideeTitel.trim() && ideeBeschreibung !== ""){
-            const neuIdee = { titel: ideeTitel, beschreibung: ideeBeschreibung}
+            const neuIdee = { titel: ideeTitel, beschreibung: ideeBeschreibung}  // Hier definierst du den body im backend (Titel und Beschreibung aus backend)
             axios.post("http://localhost:5001/ideen", neuIdee)
                 .then((response)=>{
                     setItems([...items, response.data]);
@@ -44,8 +45,13 @@ const Ideen = () => {
         setIsPopupVisible(false);
     }
 
+    // DELETE Methode rein
     const handleRemoveCard = (entfernendeKarte) => {
-        setItems((prevItems) => prevItems.filter((item) => item !== entfernendeKarte));
+        axios.delete(`http://localhost:5001/ideen/${entfernendeKarte._id}`)
+            .then(() => {
+                setItems((prevItems) => prevItems.filter((item) => item._id !== entfernendeKarte._id));
+            })
+            .catch((err) => alert("Fehler beim Löschen der Idee"));
     }
   
     return(
