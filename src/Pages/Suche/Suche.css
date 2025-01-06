@@ -3,6 +3,7 @@
     margin: 20px 20px 20px 225px; /*210*/
     position: relative;
     transition: all 0.3s ease;
+    
 }
 
 .suche h1{ 
@@ -17,6 +18,7 @@
     justify-content: center;
     align-items: center;
     max-width: 600px;
+    min-width: 400px;
     height: 55px;
     margin: 30px auto;
     border-radius: 50px;
@@ -49,4 +51,32 @@
 
 #suchleiste-btn:hover {
     background-color: #3a3a3a;
+}
+
+.suchanzeigen {
+    width: 100%;
+    height: 80vh;
+}
+
+.suchanzeigen .ideen-reihe{
+    background: #fff;
+    border-radius: 10px;
+    width: 100%;
+    height: 50%;
+    overflow-x: scroll;
+    overflow-y: scroll;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 350px));
+    margin-bottom: 20px;
+}
+
+.suchanzeigen .entwürfe-reihe{
+    background: #fff;
+    border-radius: 10px;
+    width: 100%;
+    height: 80%;
+    overflow-x: scroll;
+    overflow-y: scroll;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 350px));
 }
