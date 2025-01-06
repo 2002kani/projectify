@@ -12,5 +12,5 @@ const Suche = () => {
         </div>
     );
 }
-
+ 
 export default Suche

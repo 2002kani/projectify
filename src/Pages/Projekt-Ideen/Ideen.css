@@ -28,7 +28,6 @@
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.06);
     padding: 20px;
     transition: transform 0.2s ease, box-shadow 0.2s ease;
-    overflow-y: scroll;
     max-width: 300px;
     height: 200px;
     border: 2px solid #eee;
@@ -66,4 +65,9 @@
     font-size: 1rem;
     color: #2e2e2e;
     line-height: 1.5;
+    background: #eee;
+    height: 70%;
+    padding: 10px;
+    border-radius: 8px;
+    overflow-y: scroll;
 }

@@ -14,7 +14,7 @@ const Ideen = () => {
     const [ideeBeschreibung, setIdeeBeschreibung] = useState("");
 
     // GET Methode aus Backend rein, weil useEffect dafür sorgt, dass diese beim neuladen immer ausgeführt wird.
-    useEffect(() => {
+    useEffect(() => { 
         axios.get("http://localhost:5001/ideen")
             .then((response) => setItems(response.data))
             .catch((err) => console.log("Fehler beim Abrufen der Ideen: ", err));
