@@ -55,27 +55,35 @@
 .suchanzeigen {
     width: 100%;
     height: 80vh;
+    display: flex;
+    gap: 1.5rem;
 }
 
 .suchanzeigen .ideen-reihe{
     background: #fff;
     border-radius: 10px;
-    width: 100%;
-    height: auto;
-    overflow-x: auto;
-    overflow-y: hidden;
+    width: 80%;
+    height: 76vh;
+    overflow-y: auto;
     gap: 15px;
     margin-bottom: 20px;
     padding: 20px;
+    scrollbar-width: none;
+}
+
+.idee-karte{
+    margin-bottom: 20px;
 }
 
 .suchanzeigen .entwürfe-reihe{
     background: #fff;
     border-radius: 10px;
     width: 100%;
-    height: 80%;
-    overflow-x: scroll;
-    overflow-y: scroll;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 350px));
+    height: 76vh;
+    overflow-y: auto;
+    padding: 20px;
+}
+
+.entwurf-karte{
+    margin-bottom: 20px;
 }

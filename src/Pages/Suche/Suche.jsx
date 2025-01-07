@@ -52,8 +52,7 @@ const Suche = () => {
                             <div className="karte-top">
                                 <h1>{entwurf.titel}</h1>
                                 <div className="karte-top-links">
-                                    <i className="bx bx-x" onClick={() => handleRemoveCard(entwurf)}></i>
-                                    <i className='bx bx-edit' onClick={(e) => handleEdit(entwurf, e)}></i>
+                    
                                 </div>
                             </div>
                             <div className="karte-main">
