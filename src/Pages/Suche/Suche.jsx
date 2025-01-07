@@ -15,24 +15,30 @@ const Suche = () => {
 
     useEffect(()=>{
         axios.get("http://localhost:5001/ideen")
-            .then((response) => setAlleIdeen(response.data))
+            .then((response) => { setAlleIdeen(response.data); 
+                                  setGefilterteIdeen(response.data); })
             .catch((err) => console.log("Fehler beim Abrufen der Ideen: ", err));  
     },[]);
 
     useEffect(()=> {
         axios.get("http://localhost:5001/entwuerfe")
-            .then((response) => setAlleEntwürfe(response.data))
+            .then((response) => {setAlleEntwürfe(response.data);
+                                 setGefilterteEntwürfe(response.data); })
             .catch((error)=> console.log("Fehler beim Abrufen der Entwürfe: ", error));  
     },[]);
 
     const handleSucheChange = (e) => {
         const sucheInput = e.target.value.toLowerCase();
         setSuchErgebnis(sucheInput);
-    }
 
-    const handleSuche = () => {
-        console.log("Gesuchter Text:", suchErgebnis);
-    };
+        // Gefilterte Ideen definieren
+        const gefilterteIdeen = alleIdeen.filter((idee) => idee.titel.toLowerCase().includes(sucheInput));
+        setGefilterteIdeen(gefilterteIdeen);
+
+        // Gefilterte Entwürfe definieren
+        const gefilterteEntwürfe = alleEntwürfe.filter((entwurf)=> entwurf.titel.toLowerCase().includes(sucheInput));
+        setGefilterteEntwürfe(gefilterteEntwürfe);
+    }
 
     const kartenKlick = (e) => {
         const key = e.currentTarget.getAttribute("data-key");
@@ -43,12 +49,12 @@ const Suche = () => {
         <div className="suche">
             <div className="suchleiste">
                 <input type="text" value={suchErgebnis} onChange={handleSucheChange} placeholder="Titel des Projekts..." id="suchleiste-input" maxLength={40}/>
-                <i className='bx bx-search-alt' id="suchleiste-btn" onClick={handleSuche}></i>
+                <i className='bx bx-search-alt' id="suchleiste-btn"></i>
             </div>
 
             <div className="suchanzeigen">
                 <div className="ideen-reihe">
-                    {alleIdeen.map((idee, index)=>(
+                    {gefilterteIdeen.map((idee, index)=>(
                         <div key={index} className="idee-karte">
                         <div className="ideen-top">
                             
@@ -59,7 +65,7 @@ const Suche = () => {
                     ))}
                 </div>
                 <div className="entwürfe-reihe">
-                    {alleEntwürfe.map((entwurf, index) => (
+                    {gefilterteEntwürfe.map((entwurf, index) => (
                         <div className="entwurf-karte" key={index} data-key={index} onClick={kartenKlick}>
                             <div className="karte-top">
                                 <h1>{entwurf.titel}</h1>
