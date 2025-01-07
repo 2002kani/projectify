@@ -8,6 +8,10 @@ const Suche = () => {
     const [alleIdeen, setAlleIdeen] = useState([]);
     const [alleEntwürfe, setAlleEntwürfe] = useState([]);
 
+    const [gefilterteIdeen, setGefilterteIdeen] = useState([]);
+    const [gefilterteEntwürfe, setGefilterteEntwürfe] = useState([]);
+
+    const [suchErgebnis, setSuchErgebnis] = useState("");
 
     useEffect(()=>{
         axios.get("http://localhost:5001/ideen")
@@ -21,6 +25,15 @@ const Suche = () => {
             .catch((error)=> console.log("Fehler beim Abrufen der Entwürfe: ", error));  
     },[]);
 
+    const handleSucheChange = (e) => {
+        const sucheInput = e.target.value.toLowerCase();
+        setSuchErgebnis(sucheInput);
+    }
+
+    const handleSuche = () => {
+        console.log("Gesuchter Text:", suchErgebnis);
+    };
+
     const kartenKlick = (e) => {
         const key = e.currentTarget.getAttribute("data-key");
         console.log(key);
@@ -29,8 +42,8 @@ const Suche = () => {
     return(
         <div className="suche">
             <div className="suchleiste">
-                <input type="text" placeholder="Titel des Projekts..." id="suchleiste-input" maxLength={40}/>
-                <i className='bx bx-search-alt' id="suchleiste-btn" ></i>
+                <input type="text" value={suchErgebnis} onChange={handleSucheChange} placeholder="Titel des Projekts..." id="suchleiste-input" maxLength={40}/>
+                <i className='bx bx-search-alt' id="suchleiste-btn" onClick={handleSuche}></i>
             </div>
 
             <div className="suchanzeigen">
