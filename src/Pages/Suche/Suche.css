@@ -64,11 +64,9 @@
     height: auto;
     overflow-x: auto;
     overflow-y: hidden;
-    display: flex;
     gap: 15px;
     margin-bottom: 20px;
     padding: 20px;
-    white-space: nowrap;
 }
 
 .suchanzeigen .entwürfe-reihe{
