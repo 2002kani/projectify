@@ -46,9 +46,8 @@ const Suche = () => {
                     ))}
                 </div>
                 <div className="entwürfe-reihe">
-                    <div className="entwürfe-reihe">
-                        {alleEntwürfe.map((entwurf, index) => (
-                            <div className="entwurf-karte" key={index} data-key={index} onClick={kartenKlick}>
+                    {alleEntwürfe.map((entwurf, index) => (
+                        <div className="entwurf-karte" key={index} data-key={index} onClick={kartenKlick}>
                             <div className="karte-top">
                                 <h1>{entwurf.titel}</h1>
                                 <div className="karte-top-links">
@@ -92,13 +91,10 @@ const Suche = () => {
                                 </div>
                             </div>
                         </div>
-                        ))}
-                    </div>
+                    ))}
                 </div>
             </div>
-
         </div>
-    );
-}
+    )};
  
 export default Suche

@@ -53,7 +53,7 @@
 }
 
 .suchanzeigen {
-    width: 100%;
+    max-width: 90vw;
     height: 80vh;
     display: flex;
     gap: 1.5rem;
@@ -62,7 +62,7 @@
 .suchanzeigen .ideen-reihe{
     background: #fff;
     border-radius: 10px;
-    width: 80%;
+    width: 25%;
     height: 76vh;
     overflow-y: auto;
     gap: 15px;
@@ -78,10 +78,14 @@
 .suchanzeigen .entwürfe-reihe{
     background: #fff;
     border-radius: 10px;
-    width: 100%;
+    width: 70%;
     height: 76vh;
     overflow-y: auto;
+    overflow-x: auto;
     padding: 20px;
+    display: grid;  /* Grid Layout */
+    grid-template-columns: repeat(auto-fit, minmax(150px, 350px));
+    gap: 20px;
 }
 
 .entwurf-karte{
