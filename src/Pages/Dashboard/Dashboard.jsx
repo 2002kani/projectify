@@ -7,7 +7,7 @@ const Dashboard = () => {
         <div className="dashboard">
             <Titelkarte titel={"Dashboard"}/>
             <div className="dashboard-inhalt">
-                <h1> HALLO </h1>
+                <h1></h1>
             </div>
         </div>
     );
