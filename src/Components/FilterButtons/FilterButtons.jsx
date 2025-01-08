@@ -1,12 +1,10 @@
 import { useState } from "react";
 import "./FilterButtons.css"
  
-const FilterButtons = () => {
-
-    const [activeFilter, setActiveFilter] = useState("datum")
+const FilterButtons = ({activeFilter, onFilterChange}) => {
 
     const handleFilterClick = (filter) => {
-        setActiveFilter(filter);
+        onFilterChange(filter);
     } 
 
 

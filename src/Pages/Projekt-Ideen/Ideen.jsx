@@ -14,18 +14,7 @@ const Ideen = () => {
     const [ideeBeschreibung, setIdeeBeschreibung] = useState("");
 
     const [gefilterteIdeen, setGefilterteIdeen] = useState([]);
-    
-    const filterDatum = () => {
-        
-    }
-
-    const filterTitel = () => {
-
-    }
-
-    const filterZufall = () => {
-
-    }
+    const [activeFilter, setActiveFilter] = useState("datum");
  
     // GET Methode aus Backend rein, weil useEffect dafür sorgt, dass diese beim neuladen immer ausgeführt wird.
     useEffect(() => { 
@@ -34,6 +23,33 @@ const Ideen = () => {
                                  setGefilterteIdeen(response.data); })
             .catch((err) => console.log("Fehler beim Abrufen der Ideen: ", err));
     }, []);
+
+    useEffect(()=> {
+        if(activeFilter === "datum"){
+            filterDatum();
+        }
+        if(activeFilter === "titel"){
+            filterTitel();
+        }
+        if(activeFilter === "zufall"){
+            filterZufall();
+        }
+    }, [activeFilter, items])
+
+    const filterDatum = () => {
+        const sortiert = [...items].sort((a, b) => new Date(a.datum) - new Date(b.datum));
+        setGefilterteIdeen(sortiert);
+    }
+
+    const filterTitel = () => {
+        const sortiert = [...items].sort((a, b) => a.titel.localeCompare(b.titel));
+        setGefilterteIdeen(sortiert);
+    }
+
+    const filterZufall = () => {
+        const sortiert = [...items].sort(()=> Math.random() - 0.5);
+        setGefilterteIdeen(sortiert);
+    }
 
     // POST Methode rein
     function addItem(){
@@ -74,7 +90,7 @@ const Ideen = () => {
             <Titelkarte titel={"Projekt Ideen"}/>
             <div className="ideen-inhalt">
                 <ErstellenButton onClick={togglePopupVisiblity}/>
-                <FilterButtons/>
+                <FilterButtons activeFilter={activeFilter} onFilterChange={setActiveFilter}/>
                 {isPopupVisible && 
                 (<IdeenPopup 
                     onClose={handleClose} 
@@ -84,7 +100,7 @@ const Ideen = () => {
                     onBeschreibungChange={setIdeeBeschreibung}/>)}
 
                 <div className="ideenkarten">
-                    {items.map((item, index)=>(
+                    {gefilterteIdeen.map((item, index)=>(
                         <div key={index} className="idee-karte">
                             <div className="ideen-top">
                                 <i className="bx bx-x" onClick={() => handleRemoveCard(item)}></i>
