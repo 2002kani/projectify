@@ -13,10 +13,25 @@ const Ideen = () => {
     const [ideeTitel, setIdeeTitel] = useState("");
     const [ideeBeschreibung, setIdeeBeschreibung] = useState("");
 
+    const [gefilterteIdeen, setGefilterteIdeen] = useState([]);
+    
+    const filterDatum = () => {
+        
+    }
+
+    const filterTitel = () => {
+
+    }
+
+    const filterZufall = () => {
+
+    }
+ 
     // GET Methode aus Backend rein, weil useEffect dafür sorgt, dass diese beim neuladen immer ausgeführt wird.
     useEffect(() => { 
         axios.get("http://localhost:5001/ideen")
-            .then((response) => setItems(response.data))
+            .then((response) => {setItems(response.data);
+                                 setGefilterteIdeen(response.data); })
             .catch((err) => console.log("Fehler beim Abrufen der Ideen: ", err));
     }, []);
 
