@@ -19,7 +19,7 @@ const Entwurf = () => {
     const bechreibungRef = useRef("");
     const [ausgewählerStack, setAusgewählerStack] = useState([]);
 
-    const feat1 = useRef("");
+    const feat1 = useRef(""); 
     const feat2 = useRef("");
     const feat3 = useRef("");
     const feat4 = useRef("");
