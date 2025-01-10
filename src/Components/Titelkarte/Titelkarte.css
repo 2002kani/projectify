@@ -69,7 +69,7 @@
     justify-content: center;
     align-items: center;
     margin: 0px 10px 0px 10px;
-    min-width: 40%;
+    width: 40%;
     height: 450x;
     border-radius: 10px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);

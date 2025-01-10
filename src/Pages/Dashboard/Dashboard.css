@@ -12,37 +12,37 @@
     display: flex;
     height: 77vh;
     border-radius: 10px;
-    background-color: #fff;
     box-shadow: rgba(0, 0, 0, 0.02) 0px 4px 12px;
 }
 
 .suchanzeigen {
     max-width: 90vw;
-    height: 80vh;
     display: flex;
     gap: 1.5rem;
 }
 
-.suchanzeigen .ideen-reihe{
+.ideen-reihe{
     background: #fff;
     border-radius: 10px;
-    width: 25%;
+    min-width: 25%;
     height: 76vh;
     overflow-y: auto;
     gap: 15px;
     margin-bottom: 20px;
     padding: 20px;
     scrollbar-width: none;
+    z-index: 0;
 }
 
 .idee-karte{
     margin-bottom: 20px;
+    z-index: 0;
 }
 
 .suchanzeigen .entwürfe-reihe{
     background: #fff;
     border-radius: 10px;
-    width: 70%;
+    width: 60vw;
     height: 76vh;
     overflow-y: auto;
     overflow-x: auto;
@@ -54,4 +54,5 @@
 
 .entwurf-karte{
     margin-bottom: 20px;
+    z-index: 0;
 }
