@@ -63,3 +63,42 @@
 .icons:hover .abmelden{
     display: block;
 }
+
+.suchleiste {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0px 10px 0px 10px;
+    min-width: 40%;
+    height: 450x;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    background-color: #fff;
+}
+
+#suchleiste-input {
+    width: 100%;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 50px;
+    font-size: 15px;
+    outline: none;
+    box-sizing: border-box;
+}
+
+#suchleiste-btn {
+    padding: 7px;
+    margin-right: 12px;
+    background-color: #2e2e2e;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#suchleiste-btn:hover {
+    background-color: #3a3a3a;
+}

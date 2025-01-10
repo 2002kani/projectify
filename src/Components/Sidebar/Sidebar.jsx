@@ -8,7 +8,6 @@ const Sidebar = ({ isOpen, onToggle }) => {
         {id: 1, bezeichnung: "Dashboard", icon: <i className='bx bx-home-alt'></i>},
         {id: 2, bezeichnung: "Ideen", icon: <i className='bx bx-bulb'></i>},
         {id: 3, bezeichnung: "Entwürfe", icon: <i className='bx bx-edit'></i>},
-        {id: 4, bezeichnung: "Suche", icon: <i className='bx bx-search'></i>},
         {id: 5, bezeichnung: "Konversationen", icon: <i className='bx bx-chat'></i>},
     ];
 

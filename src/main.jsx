@@ -11,7 +11,6 @@ import Entwurf from "./Pages/Projekt-Entwürfe/Entwurf.jsx"
 import Ideen from "./Pages/Projekt-Ideen/ideen.jsx"
 import Konversation from "./Pages/Konversationen/Konversation.jsx"
 import Sidebar from './Components/Sidebar/sidebar.jsx'
-import Suche from "./Pages/Suche/Suche.jsx"
 
 const Layout = () =>{
 
@@ -47,9 +46,6 @@ const router = createBrowserRouter([
     },{
       path: "/Konversationen",
       element: <Konversation/>
-    },{
-      path: "/Suche",
-      element: <Suche/>
     }]
   }
 ]);
