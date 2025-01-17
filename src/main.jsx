@@ -11,6 +11,7 @@ import Entwurf from "./Pages/Projekt-Entwürfe/Entwurf.jsx"
 import Ideen from "./Pages/Projekt-Ideen/ideen.jsx"
 import Konversation from "./Pages/Konversationen/Konversation.jsx"
 import Sidebar from './Components/Sidebar/sidebar.jsx'
+import Login from './Pages/Login/Login.jsx'
 
 const Layout = () =>{
 
@@ -25,6 +26,14 @@ const Layout = () =>{
     </div>
   );
 }
+
+const AuthLayout = () => {
+  return(
+    <div className="auth-layout">
+      <Outlet/>
+    </div>
+  );
+};
 
 const router = createBrowserRouter([
   {
@@ -46,7 +55,12 @@ const router = createBrowserRouter([
     },{
       path: "/Konversationen",
       element: <Konversation/>
-    }]
+    },]
+  },
+  {
+    path: "/Login",
+    element: <AuthLayout />,
+    children: [{ path: "/Login", element: <Login/>}]
   }
 ]);
 
