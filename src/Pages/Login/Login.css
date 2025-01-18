@@ -1,6 +1,6 @@
 .signup {
     max-width: 400px;
-    margin: 3rem auto;
+    margin: 2rem auto;
     padding: 2rem 2rem 0.8rem 2rem;
     border-radius: 12px;
     background-color: #ffffff;
@@ -81,6 +81,22 @@
     font-weight: 600;
 }
 
+.logo-section h2{
+    padding: 0.5rem 0.5rem 0.5rem 2rem;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    cursor: default;
+}
+
+.loading-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 90vh;
+    text-align: center;
+    flex-direction: column;
+}
 
 @media (max-width: 480px) {
     .signup {

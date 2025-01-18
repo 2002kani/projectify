@@ -1,12 +1,13 @@
 import { useState } from "react";
 import "./Login.css"
 import { login, signup } from "../../firebase";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import { toast } from "react-toastify";
 
 const Login = () => {
 
     const navigate = useNavigate();
+    const [isLoading, setLoading] = useState(false);
     const [signState, setSignState] = useState("Anmelden");
     const [formData, setFormData] = useState({
         name: "",
@@ -37,7 +38,7 @@ const Login = () => {
     const user_auth = async(e)=>{
         e.preventDefault();
         if(!validateForm()) return;
-        //setLoading(true);
+        setLoading(true);
         try{
             if(signState=== "Anmelden"){
                 await login(formData.email, formData.password);
@@ -49,10 +50,23 @@ const Login = () => {
         } catch(error){
             console.error("Auth error:", error);
         }
-        //setLoading(false);
+        setLoading(false);
+    }
+
+    if(isLoading){
+        return(
+            <div className="loading-container">
+                <h1> Seite Lädt... </h1>
+                <p> Bitte warte einen Moment.</p>
+            </div>
+        );
     }
 
     return(
+        <>
+        <div className="logo-section">
+            <h2><span className="material-symbols-outlined"> rocket_launch </span> Projectify</h2>
+        </div>
         <div className="signup">
             <h2> Ganz einfach {signState} </h2>
             <p> {signState} um effizient deine eigenen Projekte zu planen und bearbeiten. </p>
@@ -70,6 +84,7 @@ const Login = () => {
             <p className="change-option" onClick={() => setSignState("Anmelden")}>Schon Registriert? <span>Anmelden</span></p> 
             : <p className="change-option" onClick={() => setSignState("Registrieren")}>Noch nicht Registriert? <span> Registrieren </span></p>}
         </div>
+        </>
     );
 } 
 
