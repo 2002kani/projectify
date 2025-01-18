@@ -1,5 +1,6 @@
 import "./Titelkarte.css"
 import BenutzerIcon from "../../Assets/IMG_1984.PNG"
+import { logout } from "../../firebase";
 
 const Titelkarte = ({titel, suchErgebnis, SucheChange}) => {
     return(
@@ -16,7 +17,7 @@ const Titelkarte = ({titel, suchErgebnis, SucheChange}) => {
                 <img src={BenutzerIcon} alt="Profilbild"/>
                 <i className='bx bx-chevron-down'></i>
                 <div className="abmelden">
-                    <p>Abmelden</p>
+                    <p onClick={() => {logout()}}>Abmelden</p>
                 </div>
             </div>
         </div>

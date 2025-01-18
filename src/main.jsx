@@ -1,10 +1,10 @@
-import { StrictMode, useState } from 'react'
+import { StrictMode, useEffect, useState } from 'react'
 import { createRoot } from 'react-dom/client'
 import './index.css'
 import App from './App.jsx'
 import 'react-toastify/dist/ReactToastify.css';
 
-import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom"
+import { createBrowserRouter, Outlet, RouterProvider, useNavigate } from "react-router-dom"
 
 import Dashboard from './Pages/Dashboard/Dashboard.jsx'
 import Error from './Pages/ErrorSeite/Error.jsx'
@@ -13,10 +13,25 @@ import Ideen from "./Pages/Projekt-Ideen/ideen.jsx"
 import Konversation from "./Pages/Konversationen/Konversation.jsx"
 import Sidebar from './Components/Sidebar/sidebar.jsx'
 import Login from './Pages/Login/Login.jsx'
+import { onAuthStateChanged } from 'firebase/auth';
+import { auth } from './firebase.js';
 
 const Layout = () =>{
 
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    onAuthStateChanged(auth, async(user) => {
+      if(user){
+        console.log("Eingeloggt!");
+        navigate("/");
+      } else{
+        console.log("Ausgeloggt!");
+        navigate("/Login");
+      }
+    })
+  }, [])
 
   return(
     <div className={`app ${isSidebarOpen ? "" : "closed"}`}>

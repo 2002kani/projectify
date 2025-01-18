@@ -1,39 +1,48 @@
 import { useState } from "react";
 import "./Login.css"
 import { login, signup } from "../../firebase";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
 
+    const navigate = useNavigate();
     const [signState, setSignState] = useState("Anmelden");
     const [formData, setFormData] = useState({
-
+        name: "",
+        email: "",
+        password: "",
     })
 
     const user_auth = async(e)=>{
         e.preventDefault();
-        setLoading(true);
+        //setLoading(true);
         if(signState=== "Anmelden"){
-            await login(email, password);
+            await login(formData.email, formData.password);
+            navigate("/");
         } else{
-            await signup(name, email, password);
+            await signup(formData.name, formData.email, formData.password);
+            navigate("/");
         }
-        setLoading(false);
+        //setLoading(false);
     }
 
     return(
         <div className="signup">
-            <h2> Ganz einfach Registrieren </h2>
-            <p> Registriere dich um effizient deine eigenen Projekte zu planen und bearbeiten. </p>
+            <h2> Ganz einfach {signState} </h2>
+            <p> {signState} um effizient deine eigenen Projekte zu planen und bearbeiten. </p>
             <div className="input-field">
-                <label> Name </label>
-                <input type="text" maxLength={30} required/>
+                { signState === "Registrieren" ?
+                (<> <label> Name </label>
+                <input value={formData.name} onChange={(e) => setFormData({...formData, name: e.target.value})} type="text" maxLength={30} required/> </>) : ""}
                 <label> E-mail </label>
-                <input type="email" required/>
+                <input value={formData.email} onChange={(e) => setFormData({...formData, email: e.target.value})} type="email" required/>
                 <label> Passwort </label>
-                <input type="password" required/>
-                <button> Registrieren </button>
+                <input value={formData.password} onChange={(e) => setFormData({...formData, password: e.target.value})} type="password" required/>
+                <button onClick={user_auth} type="submit"> {signState} </button>
             </div>
-            <p className="change-option">Schon Registriert? <span>Anmelden</span></p>
+            {signState === "Registrieren" ? 
+            <p className="change-option" onClick={() => setSignState("Anmelden")}>Schon Registriert? <span>Anmelden</span></p> 
+            : <p className="change-option" onClick={() => setSignState("Registrieren")}>Noch nicht Registriert? <span> Registrieren </span></p>}
         </div>
     );
 } 
