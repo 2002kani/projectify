@@ -2,6 +2,7 @@ import { useState } from "react";
 import "./Login.css"
 import { login, signup } from "../../firebase";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const Login = () => {
 
@@ -13,15 +14,40 @@ const Login = () => {
         password: "",
     })
 
+    const validateForm = () => {
+        if (!formData.email || !formData.password) {
+            toast.error("Bitte fülle alle Pflichtfelder aus!");
+            return false;
+        }
+        if (signState === "Registrieren" && !formData.name) {
+            toast.error("Bitte gib deinen Namen ein!");
+            return false;
+        }
+        if (formData.password.length < 6) {
+            toast.error("Das Passwort muss mindestens 6 Zeichen lang sein!");
+            return false;
+        }
+        if (!formData.email.includes('@')) {
+            toast.error("Bitte gib eine gültige E-Mail-Adresse ein!");
+            return false;
+        }
+        return true;
+    };
+
     const user_auth = async(e)=>{
         e.preventDefault();
+        if(!validateForm()) return;
         //setLoading(true);
-        if(signState=== "Anmelden"){
-            await login(formData.email, formData.password);
-            navigate("/");
-        } else{
-            await signup(formData.name, formData.email, formData.password);
-            navigate("/");
+        try{
+            if(signState=== "Anmelden"){
+                await login(formData.email, formData.password);
+                navigate("/");
+            } else{
+                await signup(formData.name, formData.email, formData.password);
+                navigate("/");
+            }
+        } catch(error){
+            console.error("Auth error:", error);
         }
         //setLoading(false);
     }
