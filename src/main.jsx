@@ -32,11 +32,31 @@ const Layout = () =>{
         navigate("/Login");
       }
     })
-  }, [])
+  }, []);
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth <= 970) {
+        setIsSidebarOpen(false);
+      }
+    };
+
+    handleResize();
+
+    window.addEventListener('resize', handleResize);
+
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  const handleSidebarToggle = () => {
+    if(window.innerWidth > 850){
+      setIsSidebarOpen(!isSidebarOpen);
+    }
+  }
 
   return(
     <div className={`app ${isSidebarOpen ? "" : "closed"}`}>
-      <Sidebar isOpen={isSidebarOpen} onToggle={()=> setIsSidebarOpen(!isSidebarOpen)}/>
+      <Sidebar isOpen={isSidebarOpen} onToggle={handleSidebarToggle}/>
       <div className="content">
         <Outlet/>
       </div>
