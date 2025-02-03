@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import Sidebar from "../../Components/Sidebar/sidebar";
 import Titelkarte from "../../Components/Titelkarte/Titelkarte";
 import "./Dashboard.css";
-import axios from "axios";
+import axios from "axios"; 
  
  
 const Dashboard = () => {
