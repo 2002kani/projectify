@@ -5,7 +5,7 @@ import "./Dashboard.css";
 import axios from "axios"; 
  
  
-const Dashboard = () => {
+const Dashboard = () => { 
 
     const [alleIdeen, setAlleIdeen] = useState([]);
     const [alleEntwürfe, setAlleEntwürfe] = useState([]);
