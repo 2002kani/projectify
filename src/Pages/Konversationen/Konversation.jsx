@@ -6,8 +6,8 @@ const chatBotAPI = import.meta.env.VITE_API_KEY_CB;
 const Konversation = () => {
     return(
         <div className="konversation">
-            
             <Titelkarte titel={"Konversationen"}/>
+            .
         </div>
     );
 }
