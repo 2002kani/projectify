@@ -16,6 +16,7 @@ import Sidebar from './Components/Sidebar/sidebar.jsx'
 import Login from './Pages/Login/Login.jsx'
 import { onAuthStateChanged } from 'firebase/auth';
 import { auth } from './firebase.js';
+import ChatBot from './Components/ChatBot/Chatbot.jsx';
 
 const Layout = () =>{
 
@@ -58,6 +59,7 @@ const Layout = () =>{
     <div className={`app ${isSidebarOpen ? "" : "closed"}`}>
       <Sidebar isOpen={isSidebarOpen} onToggle={handleSidebarToggle}/>
       <div className="content">
+        <ChatBot/>
         <Outlet/>
       </div>
     </div>
