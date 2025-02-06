@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import "./ChatBot.css";
 
 const ChatBot = () => {
   const [isDragging, setIsDragging] = useState(false);
@@ -46,27 +47,27 @@ const ChatBot = () => {
     };
   }, [isDragging]);
 
-  return (
-    <div style={{
-        position: 'fixed',
-        left: position.x,
-        top: position.y,
-        zIndex: 1000,
-        cursor: isDragging ? 'grabbing' : 'grab',
-        width: '300px',
-        height: '400px',
-        border: '1px solid #ccc',
-        borderRadius: '10px',
-        boxShadow: '0 0 10px rgba(0,0,0,0.1)',
-        backgroundColor: 'white'
-      }}
-      onMouseDown={handleMouseDown}>
+  const toggleOpen = () => {
+    setIsOpen(prev => !prev);
+  }
 
-      <div style={{ padding: '10px', backgroundColor: '#f0f0f0', borderBottom: '1px solid #ddd' }}>
-        Chatbot Header (Zum Ziehen hier klicken)
+  return (
+    <div className={isOpen ? "chatbot-max" : "chatbot-mini"}
+        onMouseDown={handleMouseDown} 
+        style={{left: position.x, top: position.y}}>
+      <div className='chatbot-top'>
+        <div className='top-headline' style={{cursor: isDragging ? 'grabbing' : 'grab'}}>
+            <p> (Hier Klicken zum bewegen) </p>
+        </div>
+        {!isOpen ? 
+        <div className="top-minusplus" onClick={toggleOpen}>
+            <p> + </p>
+        </div> 
+        : <div className="top-minusplus" onClick={toggleOpen}>
+            <p> - </p>
+        </div>}
       </div>
-      <div style={{ padding: '10px' }}>
-        {/* Hier Chat-Inhalt einfügen */}
+      <div className='chatbot-content'>
         <p>Chat content goes here...</p>
       </div>
     </div>
