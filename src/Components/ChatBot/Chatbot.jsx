@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
 import "./ChatBot.css";
 
+const ChatbotKey = import.meta.env.VITE_API_KEY_CB;
+
 const ChatBot = () => {
   // Definiere die Größen für beide Modi
   const miniSize = { width: 150, height: 150 };  // passe diese Werte an deine CSS an
@@ -67,6 +69,8 @@ const ChatBot = () => {
       y: Math.min(position.y, window.innerHeight - newSize.height)
     });
   };
+
+  
 
   return (
     <div className={isOpen ? "chatbot-max" : "chatbot-mini"}
